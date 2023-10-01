@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Registros">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.35" prefHeight="571.0" prefWidth="1100.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
+                                 <children>
+                                    <Pane prefHeight="90.0" prefWidth="382.0" style="-fx-background-color: #000000;">
+                                       <children>
+                                          <Label layoutX="67.0" layoutY="31.0" prefHeight="29.0" prefWidth="252.0" text="Registros del alquiler" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold Italic" size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutY="491.0" prefHeight="78.0" prefWidth="382.0" style="-fx-background-color: #000000;" />
+                                    <Label layoutX="14.0" layoutY="135.0" prefHeight="29.0" prefWidth="110.0" text="Fecha Inicial:">
+                                       <font>
+                                          <Font name="Ubuntu Bold Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker layoutX="156.0" layoutY="138.0" />
+                                    <Label layoutX="14.0" layoutY="244.0" prefHeight="29.0" prefWidth="110.0" text="Fecha Final:">
+                                       <font>
+                                          <Font name="Ubuntu Bold Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker layoutX="156.0" layoutY="247.0" />
+                                    <ImageView fitHeight="180.0" fitWidth="235.0" layoutX="73.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
+                                 <children>
+                                    <Pane prefHeight="90.0" prefWidth="713.0" style="-fx-background-color: #000000;">
+                                       <children>
+                                          <Label layoutX="192.0" layoutY="31.0" prefHeight="29.0" prefWidth="329.0" text="Lista de vehículos alquilados" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold Italic" size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="598.0" layoutY="27.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" style="-fx-background-color: #000000;" text="Regresar" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold Italic" size="18.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutY="491.0" prefHeight="78.0" prefWidth="718.0" style="-fx-background-color: #000000;">
+                                       <children>
+                                          <Button layoutX="259.0" layoutY="25.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="201.0" style="-fx-background-color: #ffffff;" text="Ver vehículos alquilados">
+                                             <font>
+                                                <Font name="Ubuntu" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                    </Pane>
+                                    <TableView layoutX="-1.0" layoutY="90.0" prefHeight="401.0" prefWidth="713.0">
+                                       <columns>
+                                          <TableColumn prefWidth="75.0" text="Placa" />
+                                          <TableColumn prefWidth="95.0" text="Referencia" />
+                                          <TableColumn prefWidth="98.0" text="Marca" />
+                                          <TableColumn prefWidth="94.0" text="Modelo" />
+                                          <TableColumn prefWidth="103.0" text="Kilometraje" />
+                                          <TableColumn prefWidth="81.0" text="Precio" />
+                                          <TableColumn prefWidth="85.0" text="Caja" />
+                                          <TableColumn prefWidth="81.0" text="Sillas" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Ganancias">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.35" prefHeight="569.0" prefWidth="1100.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
+                                 <children>
+                                    <Pane prefHeight="90.0" prefWidth="382.0" style="-fx-background-color: #000000;">
+                                       <children>
+                                          <Label layoutX="65.0" layoutY="31.0" prefHeight="29.0" prefWidth="252.0" text="Ganancias del alquiler" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold Italic" size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutY="489.0" prefHeight="78.0" prefWidth="382.0" style="-fx-background-color: #000000;">
+                                       <children>
+                                          <Button layoutX="112.0" layoutY="25.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="159.0" style="-fx-background-color: #ffffff;" text="Ver marca vehículo">
+                                             <font>
+                                                <Font name="Ubuntu" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                    </Pane>
+                                    <Label layoutX="14.0" layoutY="123.0" prefHeight="29.0" prefWidth="110.0" text="Fecha Inicial:">
+                                       <font>
+                                          <Font name="Ubuntu Bold Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker layoutX="134.0" layoutY="126.0" />
+                                    <Label layoutX="14.0" layoutY="230.0" prefHeight="29.0" prefWidth="110.0" text="Fecha Final:">
+                                       <font>
+                                          <Font name="Ubuntu Bold Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker layoutX="134.0" layoutY="233.0" />
+                                    <Label layoutX="12.0" layoutY="294.0" prefHeight="29.0" prefWidth="219.0" text="Ganancias en el rango de fechas:">
+                                       <font>
+                                          <Font name="Ubuntu Bold Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="13.0" layoutY="332.0" prefHeight="28.0" prefWidth="217.0" promptText="Ganancias" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
+                                       <font>
+                                          <Font name="Ubuntu Bold Italic" size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                    </TextField>
+                                    <Label layoutX="12.0" layoutY="381.0" prefHeight="29.0" prefWidth="258.0" text="Marca vehículo general más alquilado:">
+                                       <font>
+                                          <Font name="Ubuntu Bold Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="16.0" layoutY="424.0" prefHeight="28.0" prefWidth="217.0" promptText="Marca del vehículo" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
+                                       <font>
+                                          <Font name="Ubuntu Bold Italic" size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                    </TextField>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
+                                 <children>
+                                    <TableView layoutY="90.0" prefHeight="401.0" prefWidth="713.0">
+                                       <columns>
+                                          <TableColumn prefWidth="112.0" text="Placa" />
+                                          <TableColumn prefWidth="115.0" text="Factura" />
+                                          <TableColumn prefWidth="144.0" text="Cedula del cliente" />
+                                          <TableColumn prefWidth="138.0" text="Fecha de registro" />
+                                          <TableColumn prefWidth="107.0" text="Fecha Inicial" />
+                                          <TableColumn prefWidth="96.0" text="Fecha Final" />
+                                       </columns>
+                                    </TableView>
+                                    <Pane prefHeight="90.0" prefWidth="713.0" style="-fx-background-color: #000000;">
+                                       <children>
+                                          <Label layoutX="256.0" layoutY="31.0" prefHeight="29.0" prefWidth="201.0" text="Lista de registros" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold Italic" size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="598.0" layoutY="27.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" style="-fx-background-color: #000000;" text="Regresar" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold Italic" size="18.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="7.0" layoutY="491.0" prefHeight="78.0" prefWidth="718.0" style="-fx-background-color: #000000;">
+                                       <children>
+                                          <Button layoutX="268.0" layoutY="24.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="159.0" style="-fx-background-color: #ffffff;" text="Generar total ganado">
+                                             <font>
+                                                <Font name="Ubuntu" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
