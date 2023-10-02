@@ -63,10 +63,10 @@ public class InicioController implements Initializable {
         //Configuracion del idioma en el que se ven los textos de la app dependiendo el sistema operativo
         lblTitulo.setText(propiedades.getResourceBundle().getString("TituloInicioView"));
         lblSubtitulo.setText(propiedades.getResourceBundle().getString("SubtituloInicioView"));
-        btnRegistrarCliente.setText(propiedades.getResourceBundle().getString("btnRegistrarCliente"));
-        btnRegistrarVehiculo.setText(propiedades.getResourceBundle().getString("btnRegistrarVehiculo"));
-        btnAlquilarVehiculo.setText(propiedades.getResourceBundle().getString("btnAlquilarVehiculo"));
-        linkDatosEmpresa.setText(propiedades.getResourceBundle().getString("linkDatosEmpresa"));
+        btnRegistrarCliente.setText(propiedades.getResourceBundle().getString("btnRegistrarClienteInicioView"));
+        btnRegistrarVehiculo.setText(propiedades.getResourceBundle().getString("btnRegistrarVehiculoInicioView"));
+        btnAlquilarVehiculo.setText(propiedades.getResourceBundle().getString("btnAlquilarVehiculoInicioView"));
+        linkDatosEmpresa.setText(propiedades.getResourceBundle().getString("linkDatosEmpresaInicioView"));
     }
 
     /**
