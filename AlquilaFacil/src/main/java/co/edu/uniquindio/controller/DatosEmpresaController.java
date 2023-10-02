@@ -157,7 +157,40 @@ public class DatosEmpresaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Configuracion del idioma en el que se ven los textos de la app dependiendo el sistema operativo
+        tabRegistros.setText(propiedades.getResourceBundle().getString("tabRegistrosDatosEmpresaView"));
+        lblTituloRegistros.setText(propiedades.getResourceBundle().getString("lblTituloRegistrosDatosEmpresaView"));
+        lblSubtituloRegistro.setText(propiedades.getResourceBundle().getString("lblSubtituloRegistroDatosEmpresaView"));
+        btnRegresarRegistro.setText(propiedades.getResourceBundle().getString("btnRegresarRegistroDatosEmpresaView"));
+        lblFechaInicialRegistro.setText(propiedades.getResourceBundle().getString("lblFechaInicialRegistroDatosEmpresaView"));
+        lblFechaFinalRegistro.setText(propiedades.getResourceBundle().getString("lblFechaFinalRegistroDatosEmpresaView"));
+        btnVehiculosAlquiladosRegistro.setText(propiedades.getResourceBundle().getString("btnVehiculosAlquiladosRegistroDatosEmpresaView"));
+        columnPlacaRegistro.setText(propiedades.getResourceBundle().getString("columnPlacaAlquilarVehiculoView"));
+        columnReferenciaRegistro.setText(propiedades.getResourceBundle().getString("columnReferenciaAlquilarVehiculoView"));
+        columnMarcaRegistro.setText(propiedades.getResourceBundle().getString("columnMarcaAlquilarVehiculoView"));
+        columnModeloRegistro.setText(propiedades.getResourceBundle().getString("columnModeloAlquilarVehiculoView"));
+        columnKilometrajeRegistro.setText(propiedades.getResourceBundle().getString("columnKilometrajeAlquilarVehiculoView"));
+        columnPrecioRegistro.setText(propiedades.getResourceBundle().getString("columnPrecioAlquilarVehiculoView"));
+        columnCajaRegistro.setText(propiedades.getResourceBundle().getString("columnCajaAlquilarVehiculoView"));
+        columnSillasRegistro.setText(propiedades.getResourceBundle().getString("columnSillasAlquilarVehiculoView"));
 
+        tabGanancias.setText(propiedades.getResourceBundle().getString("tabGananciasDatosEmpresaView"));
+        lblTituloGanancias.setText(propiedades.getResourceBundle().getString("lblTituloGananciasDatosEmpresaView"));
+        btnRegresarGanancias.setText(propiedades.getResourceBundle().getString("btnRegresarRegistroDatosEmpresaView"));
+        lblFechaInicialGanancias.setText(propiedades.getResourceBundle().getString("lblFechaInicialRegistroDatosEmpresaView"));
+        lblFechaFinalGanancias.setText(propiedades.getResourceBundle().getString("lblFechaFinalRegistroDatosEmpresaView"));
+        lblGanancias.setText(propiedades.getResourceBundle().getString("lblGananciasDatosEmpresaView"));
+        txtGanancias.setPromptText(propiedades.getResourceBundle().getString("txtGananciasDatosEmpresaView"));
+        lblMarcaGanancias.setText(propiedades.getResourceBundle().getString("lblMarcaGananciasDatosEmpresaView"));
+        txtMarcaGanancias.setPromptText(propiedades.getResourceBundle().getString("txtMarcaGananciasDatosEmpresaView"));
+        btnMarcaVehiculoGanancias.setText(propiedades.getResourceBundle().getString("btnMarcaVehiculoGananciasDatosEmpresaView"));
+        btnaTotalGanadoGanancias.setText(propiedades.getResourceBundle().getString("btnaTotalGanadoGananciasDatosEmpresaView"));
+        columnPlacaGanancias.setText(propiedades.getResourceBundle().getString("columnPlacaAlquilarVehiculoView"));
+        columnFacturaGanancias.setText(propiedades.getResourceBundle().getString("columnFacturaGananciasDatosEmpresaView"));
+        columnCedulaGanancias.setText(propiedades.getResourceBundle().getString("columnCedulaGananciasDatosEmpresaView"));
+        columnFechaRegistroGanancias.setText(propiedades.getResourceBundle().getString("columnFechaRegistroGananciasDatosEmpresaView"));
+        columnFechaInicalGanancias.setText(propiedades.getResourceBundle().getString("lblFechaInicialRegistroDatosEmpresaView"));
+        columnFechaFinalGanancias.setText(propiedades.getResourceBundle().getString("lblFechaFinalRegistroDatosEmpresaView"));
     }
 
     @FXML

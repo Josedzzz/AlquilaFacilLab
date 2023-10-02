@@ -88,11 +88,11 @@
                                        <columns>
                                           <TableColumn fx:id="columnPlacaRegistro" prefWidth="75.0" text="Placa" />
                                           <TableColumn fx:id="columnReferenciaRegistro" prefWidth="95.0" text="Referencia" />
-                                          <TableColumn fx:id="columnMarcaRegistro" prefWidth="98.0" text="Marca" />
-                                          <TableColumn fx:id="columnModeloRegistro" prefWidth="94.0" text="Modelo" />
-                                          <TableColumn fx:id="columnKilometrajeRegistro" prefWidth="103.0" text="Kilometraje" />
-                                          <TableColumn fx:id="columnPrecioRegistro" prefWidth="81.0" text="Precio" />
-                                          <TableColumn fx:id="columnCajaRegistro" prefWidth="85.0" text="Caja" />
+                                          <TableColumn fx:id="columnMarcaRegistro" prefWidth="72.0" text="Marca" />
+                                          <TableColumn fx:id="columnModeloRegistro" prefWidth="85.0" text="Modelo" />
+                                          <TableColumn fx:id="columnKilometrajeRegistro" prefWidth="105.0" text="Kilometraje" />
+                                          <TableColumn fx:id="columnPrecioRegistro" prefWidth="89.0" text="Precio" />
+                                          <TableColumn fx:id="columnCajaRegistro" prefWidth="110.0" text="Caja" />
                                           <TableColumn fx:id="columnSillasRegistro" prefWidth="81.0" text="Sillas" />
                                        </columns>
                                     </TableView>
