@@ -1,9 +1,6 @@
 package co.edu.uniquindio.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 
@@ -11,12 +8,14 @@ import java.util.ArrayList;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Vehiculo {
     private String placa;
     private String referencia;
+    private String registro;
     private MarcaVehiculo marcaVehiculo;
     private String modelo;
-    private String rutaImagen;
+    private ArrayList<String> rutasImagenes;
     private double kilometraje;
     private double precioAlquiler; //Es el precio de alquiler por dia
     private TipoCajaVehiculo tipoCajaVehiculo;

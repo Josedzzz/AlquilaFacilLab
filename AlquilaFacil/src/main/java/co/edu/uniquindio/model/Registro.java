@@ -1,19 +1,20 @@
 package co.edu.uniquindio.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Registro {
     private Cliente cliente;
     private Vehiculo vehiculo;
-    private double precioFactura; //Precio de alquilada
-    private String fechaFactura; //Fecha en la que se genero la factura
-    private String fechaInicial;
-    private String fechaFinal;
+    private LocalDateTime fechaRegistro;
+    private LocalDate fechaInicio;
+    private LocalDate fechaRegreso;
+    private double precioFactura; //Precio total de la alquilada
 }
