@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.controller.AlquilarVehiculoController">
    <center>
       <SplitPane dividerPositions="0.35" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
@@ -23,7 +22,7 @@
                <children>
                   <Pane prefHeight="90.0" prefWidth="382.0" style="-fx-background-color: #000000;">
                      <children>
-                        <Label layoutX="85.0" layoutY="31.0" prefHeight="29.0" prefWidth="213.0" text="Datos del alquiler" textFill="WHITE">
+                        <Label fx:id="lblTitulo" layoutX="85.0" layoutY="31.0" prefHeight="29.0" prefWidth="213.0" text="Datos del alquiler" textFill="WHITE">
                            <font>
                               <Font name="Ubuntu Bold Italic" size="24.0" />
                            </font>
@@ -32,7 +31,7 @@
                   </Pane>
                   <Pane layoutY="520.0" prefHeight="78.0" prefWidth="382.0" style="-fx-background-color: #000000;">
                      <children>
-                        <Button layoutX="114.0" layoutY="25.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="155.0" style="-fx-background-color: #ffffff;" text="Generar factura">
+                        <Button fx:id="btnGenerarFactura" layoutX="114.0" layoutY="25.0" mnemonicParsing="false" onAction="#generarFactura" prefHeight="28.0" prefWidth="155.0" style="-fx-background-color: #ffffff;" text="Generar factura">
                            <font>
                               <Font name="Ubuntu" size="14.0" />
                            </font>
@@ -42,8 +41,8 @@
                         </Button>
                      </children>
                   </Pane>
-                  <DatePicker layoutX="158.0" layoutY="135.0" />
-                  <TextField layoutX="182.0" layoutY="422.0" promptText="Cédula del cliente" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
+                  <DatePicker fx:id="dateFechaInicial" layoutX="158.0" layoutY="135.0" />
+                  <TextField fx:id="txtCedulaCliente" layoutX="182.0" layoutY="422.0" promptText="Cédula del cliente" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
                      <font>
                         <Font name="Ubuntu Bold Italic" size="14.0" />
                      </font>
@@ -51,18 +50,18 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <Label layoutX="24.0" layoutY="133.0" prefHeight="29.0" prefWidth="110.0" text="Fecha Inicial:">
+                  <Label fx:id="lblFechaInicial" layoutX="24.0" layoutY="133.0" prefHeight="29.0" prefWidth="110.0" text="Fecha Inicial:">
                      <font>
                         <Font name="Ubuntu Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="24.0" layoutY="285.0" prefHeight="29.0" prefWidth="110.0" text="Fecha Final:">
+                  <Label fx:id="lblFechaFinal" layoutX="24.0" layoutY="285.0" prefHeight="29.0" prefWidth="110.0" text="Fecha Final:">
                      <font>
                         <Font name="Ubuntu Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker layoutX="158.0" layoutY="288.0" />
-                  <Label layoutX="24.0" layoutY="421.0" prefHeight="29.0" prefWidth="128.0" text="Cédula del cliente:">
+                  <DatePicker fx:id="dateFechaFinal" layoutX="158.0" layoutY="288.0" />
+                  <Label fx:id="lblCedulaCliente" layoutX="24.0" layoutY="421.0" prefHeight="29.0" prefWidth="138.0" text="Cédula del cliente:">
                      <font>
                         <Font name="Ubuntu Bold Italic" size="14.0" />
                      </font>
@@ -73,7 +72,7 @@
                <children>
                   <Pane layoutX="-6.0" layoutY="520.0" prefHeight="78.0" prefWidth="718.0" style="-fx-background-color: #000000;">
                      <children>
-                        <Button layoutX="259.0" layoutY="25.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="201.0" style="-fx-background-color: #ffffff;" text="Ver vehículos disponibles">
+                        <Button fx:id="btnVehiculosDisponibles" layoutX="259.0" layoutY="25.0" mnemonicParsing="false" onAction="#verVehiculosDisponibles" prefHeight="28.0" prefWidth="201.0" style="-fx-background-color: #ffffff;" text="Ver vehículos disponibles">
                            <font>
                               <Font name="Ubuntu" size="14.0" />
                            </font>
@@ -85,12 +84,12 @@
                   </Pane>
                   <Pane prefHeight="90.0" prefWidth="713.0" style="-fx-background-color: #000000;">
                      <children>
-                        <Label layoutX="187.0" layoutY="31.0" prefHeight="29.0" prefWidth="339.0" text="Lista de vehículos disponibles" textFill="WHITE">
+                        <Label fx:id="lblSubtitulo" layoutX="187.0" layoutY="31.0" prefHeight="29.0" prefWidth="339.0" text="Lista de vehículos disponibles" textFill="WHITE">
                            <font>
                               <Font name="Ubuntu Bold Italic" size="24.0" />
                            </font>
                         </Label>
-                        <Button layoutX="598.0" layoutY="27.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" style="-fx-background-color: #000000;" text="Regresar" textFill="WHITE">
+                        <Button fx:id="btnRegresar" layoutX="598.0" layoutY="27.0" mnemonicParsing="false" onAction="#regresar" prefHeight="37.0" prefWidth="101.0" style="-fx-background-color: #000000;" text="Regresar" textFill="WHITE">
                            <font>
                               <Font name="Ubuntu Bold Italic" size="18.0" />
                            </font>
@@ -100,19 +99,19 @@
                         </Button>
                      </children>
                   </Pane>
-                  <TableView layoutY="90.0" prefHeight="286.0" prefWidth="713.0">
+                  <TableView fx:id="tableViewVehiculosDisponibles" layoutY="90.0" prefHeight="286.0" prefWidth="713.0">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="Placa" />
-                        <TableColumn prefWidth="95.0" text="Referencia" />
-                        <TableColumn prefWidth="98.0" text="Marca" />
-                        <TableColumn prefWidth="94.0" text="Modelo" />
-                        <TableColumn prefWidth="103.0" text="Kilometraje" />
-                        <TableColumn prefWidth="81.0" text="Precio" />
-                        <TableColumn prefWidth="85.0" text="Caja" />
-                        <TableColumn prefWidth="81.0" text="Sillas" />
+                        <TableColumn fx:id="columnPlaca" prefWidth="75.0" text="Placa" />
+                        <TableColumn fx:id="columnReferencia" prefWidth="95.0" text="Referencia" />
+                        <TableColumn fx:id="columnMarca" prefWidth="98.0" text="Marca" />
+                        <TableColumn fx:id="columnModelo" prefWidth="94.0" text="Modelo" />
+                        <TableColumn fx:id="columnKilometraje" prefWidth="103.0" text="Kilometraje" />
+                        <TableColumn fx:id="columnPrecio" prefWidth="81.0" text="Precio" />
+                        <TableColumn fx:id="columnCaja" prefWidth="85.0" text="Caja" />
+                        <TableColumn fx:id="columnSillas" prefWidth="81.0" text="Sillas" />
                      </columns>
                   </TableView>
-                  <ImageView fitHeight="132.0" fitWidth="200.0" layoutX="257.0" layoutY="382.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="ImageVehiculo" fitHeight="132.0" fitWidth="200.0" layoutX="257.0" layoutY="382.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
         </items>
