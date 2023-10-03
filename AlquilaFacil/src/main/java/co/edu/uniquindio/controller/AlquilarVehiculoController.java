@@ -1,22 +1,28 @@
 package co.edu.uniquindio.controller;
 
 import co.edu.uniquindio.app.AlquilaFacilApp;
+import co.edu.uniquindio.exceptions.AtributosVaciosException;
+import co.edu.uniquindio.exceptions.ClienteNoRegistradoException;
+import co.edu.uniquindio.exceptions.FechaInvalidaException;
 import co.edu.uniquindio.model.Empresa;
 import co.edu.uniquindio.model.Propiedades;
+import co.edu.uniquindio.model.Registro;
 import co.edu.uniquindio.model.Vehiculo;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class AlquilarVehiculoController implements Initializable {
@@ -87,19 +93,14 @@ public class AlquilarVehiculoController implements Initializable {
     private AlquilaFacilApp alquilaFacilApp;
     private Stage stage;
     private InicioController inicioController;
+    private ObservableList<Vehiculo> listadoVehiculos = FXCollections.observableArrayList();
+    private Vehiculo vehiculoSeleccion;
+    private LocalDate fechaInicialFiltrar;
+    private LocalDate fechaFinalFiltrar;
 
     //Uso del singleton
     private final Empresa empresa = Empresa.getInstance();
     private final Propiedades propiedades = Propiedades.getInstance();
-
-    public void setAlquilaFacilApp(AlquilaFacilApp alquilaFacilApp) {
-        this.alquilaFacilApp = alquilaFacilApp;
-    }
-
-    public void init(Stage stage, InicioController inicioController) {
-        this.stage = stage;
-        this.inicioController = inicioController;
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -121,11 +122,88 @@ public class AlquilarVehiculoController implements Initializable {
         columnPrecio.setText(propiedades.getResourceBundle().getString("columnPrecioAlquilarVehiculoView"));
         columnCaja.setText(propiedades.getResourceBundle().getString("columnCajaAlquilarVehiculoView"));
         columnSillas.setText(propiedades.getResourceBundle().getString("columnSillasAlquilarVehiculoView"));
+        //Datos de la tableView de vehiculos
+        this.columnPlaca.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getPlaca()));
+        this.columnReferencia.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getReferencia()));
+        this.columnMarca.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMarcaVehiculo().toString()));
+        this.columnModelo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getModelo()));
+        this.columnKilometraje.setCellValueFactory(e -> {
+            double kilometraje = e.getValue().getKilometraje();
+            String kilometrajeString = String.valueOf(kilometraje);
+            return new ReadOnlyStringWrapper(kilometrajeString);
+        });
+        this.columnPrecio.setCellValueFactory(e -> {
+            double precio = e.getValue().getPrecioAlquiler();
+            String precioString = String.valueOf(precio);
+            return new ReadOnlyStringWrapper(precioString);
+        });
+        this.columnCaja.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getTipoCajaVehiculo().toString()));
+        this.columnSillas.setCellValueFactory( e -> {
+            int sillas = e.getValue().getNumSillas();
+            String sillasString = String.valueOf(sillas);
+            return new ReadOnlyStringWrapper(sillasString);
+        });
+        //Selecciono vehiculos de la tabla
+        tableViewVehiculosDisponibles.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                vehiculoSeleccion = newSelection;
+                vehiculoSeleccion = tableViewVehiculosDisponibles.getSelectionModel().getSelectedItem();
+                String rutaImagen = vehiculoSeleccion.getImagenVehiculo();
+                Image imagenVehiculoSeleccion = new Image("file:" + rutaImagen);
+                ImageVehiculo.setImage(imagenVehiculoSeleccion);
+            }
+        });
+        //Menejo de la fecha inicial y de la fecha final para los filtros
+        dateFechaInicial.setOnAction(event -> {
+            fechaInicialFiltrar = dateFechaInicial.getValue();
+        });
+        dateFechaFinal.setOnAction(event -> {
+            fechaFinalFiltrar = dateFechaFinal.getValue();
+        });
     }
 
+    public void setAlquilaFacilApp(AlquilaFacilApp alquilaFacilApp) {
+        this.alquilaFacilApp = alquilaFacilApp;
+    }
+
+    public void init(Stage stage, InicioController inicioController) {
+        this.stage = stage;
+        this.inicioController = inicioController;
+    }
+
+    /**
+     * Limpia los campos de la interfaz
+     */
+    public void limpiarCampos() {
+        dateFechaInicial.setValue(null);
+        dateFechaFinal.setValue(null);
+        txtCedulaCliente.setText("");
+        ImageVehiculo.setImage(null);
+    }
+
+    /**
+     * Genera un registro
+     * @param event
+     */
     @FXML
     void generarFactura(ActionEvent event) {
-
+        try {
+            Registro registro = empresa.crearRegistro(
+                    txtCedulaCliente.getText(),
+                    vehiculoSeleccion,
+                    fechaInicialFiltrar,
+                    fechaFinalFiltrar
+            );
+            mostrarMensaje("Notificación AlquilaFacil", "Información valida", "Se ha creado el registro correctamente con un costo de: " + registro.getPrecioFactura(), Alert.AlertType.INFORMATION);
+            tableViewVehiculosDisponibles.getItems().clear();
+            limpiarCampos();
+        } catch (ClienteNoRegistradoException e) {
+            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+        } catch (AtributosVaciosException e) {
+            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+        } catch (FechaInvalidaException e) {
+            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     /**
@@ -140,6 +218,36 @@ public class AlquilarVehiculoController implements Initializable {
 
     @FXML
     void verVehiculosDisponibles(ActionEvent event) {
+        try {
+            empresa.validarFechas(fechaInicialFiltrar, fechaFinalFiltrar);
+            tableViewVehiculosDisponibles.getItems().clear();
+            tableViewVehiculosDisponibles.setItems(getListaVehiculosDisponibles(fechaInicialFiltrar, fechaFinalFiltrar));
+            mostrarMensaje("Notificación AlquilaFacil", "Información valida", "El filtro de vehiculos se ha realizado de forma correcta", Alert.AlertType.INFORMATION);
+        } catch (AtributosVaciosException e) {
+            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+        } catch (FechaInvalidaException e) {
+            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+        }
 
+    }
+
+    private ObservableList<Vehiculo> getListaVehiculosDisponibles(LocalDate fechaInicial, LocalDate fechaFinal) {
+        listadoVehiculos.addAll(empresa.obtenerVehiculosDisponibles(fechaInicial, fechaFinal));
+        return listadoVehiculos;
+    }
+
+    /**
+     * Muestra un mensaje dependiendo con el tipo de alerta seleccionado
+     * @param title
+     * @param header
+     * @param content
+     * @param alertType
+     */
+    public void mostrarMensaje(String title, String header, String content, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

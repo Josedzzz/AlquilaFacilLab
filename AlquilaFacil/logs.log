@@ -104,3 +104,55 @@ Oct 02, 2023 10:17:25 PM co.edu.uniquindio.model.Empresa <init>
 INFO: Se crea una nueva instancia de la empresa
 Oct 02, 2023 10:17:40 PM co.edu.uniquindio.model.Empresa crearVehiculo
 INFO: Se ha registrado un nuevo vehiculo con placa: 111
+Oct 02, 2023 11:09:13 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 12:34:30 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 1:53:10 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 1:53:28 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 11
+Oct 03, 2023 1:53:56 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 22
+Oct 03, 2023 2:46:27 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 2:46:59 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 11
+Oct 03, 2023 2:47:34 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 22
+Oct 03, 2023 2:48:16 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 33
+Oct 03, 2023 2:49:04 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 333
+Oct 03, 2023 2:50:45 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 2:51:00 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 11
+Oct 03, 2023 2:53:20 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 2:53:37 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 11
+Oct 03, 2023 3:18:13 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 3:18:29 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 222
+Oct 03, 2023 3:19:01 AM co.edu.uniquindio.model.Empresa crearRegistro
+WARNING: El vehiculo es un campo obligatorio
+Oct 03, 2023 3:22:17 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 3:22:33 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 222
+Oct 03, 2023 3:23:03 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 333
+Oct 03, 2023 3:25:14 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 3:25:36 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 222
+Oct 03, 2023 3:27:32 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 3:27:47 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 2
+Oct 03, 2023 3:28:36 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 3
+Oct 03, 2023 3:29:24 AM co.edu.uniquindio.model.Empresa crearRegistro
+WARNING: La fecha inicial no puede ser mayor a la fecha final
