@@ -15,7 +15,7 @@ public class Vehiculo {
     private String registro;
     private MarcaVehiculo marcaVehiculo;
     private String modelo;
-    private ArrayList<String> rutasImagenes;
+    private String imagenVehiculo;
     private double kilometraje;
     private double precioAlquiler; //Es el precio de alquiler por dia
     private TipoCajaVehiculo tipoCajaVehiculo;

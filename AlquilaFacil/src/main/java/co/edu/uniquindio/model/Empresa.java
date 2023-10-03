@@ -2,7 +2,6 @@ package co.edu.uniquindio.model;
 
 import co.edu.uniquindio.exceptions.*;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -90,7 +89,7 @@ public class Empresa {
 
     //Validar atributos vacios cambiar el boolean y convertir a cliente retornando el objeto cliente
 
-    public Cliente crearCliente(String cedula, String nombre, String telefono, String email, String ciudad, String direccion) throws AtributosVaciosException, CLienteYaExistenteException{
+    public Cliente crearCliente(String cedula, String nombre, String telefono, String email, String ciudad, String direccion) throws AtributosVaciosException, CLienteYaExistenteException {
 
         Cliente clienteEncontrado = obtenerCliente(cedula);
 
@@ -248,33 +247,31 @@ public class Empresa {
      * @return
      * @throws VehiculoYaExistenteException
      */
-
-    //VALIDAR LOS DATOS COMO KILOMETRAJE.
-    public Vehiculo crearVehiculo(String placa,String referencia, MarcaVehiculo marcaVehiculo,String modelo,ArrayList<String> rutaImagenes, double kilometraje, double precioAlquiler, TipoCajaVehiculo tipoCajaVehiculo, int numSillas) throws AtributosVaciosException, AtributoNegativoException, VehiculoYaExistenteException {
+    public Vehiculo crearVehiculo(String placa,String referencia, MarcaVehiculo marcaVehiculo,String modelo, String imagenVehiculo, double kilometraje, double precioAlquiler, TipoCajaVehiculo tipoCajaVehiculo, int numSillas) throws AtributosVaciosException, AtributoNegativoException, VehiculoYaExistenteException {
 
         Vehiculo vehiculoAsociado = obtenerVehiculo(placa);
 
-        if(placa == null || placa.isBlank()){
+        if(placa == "" || placa.isEmpty()){
             LOGGER.log(Level.WARNING, "La placa es obligatoria para el registro" );
             throw new AtributosVaciosException("La placa es obligatoria");
         }
 
-        if(referencia == null || referencia.isBlank()){
+        if(referencia == "" || referencia.isEmpty()){
             LOGGER.log(Level.WARNING, "La referencia es obligatoria para el registro" );
             throw new AtributosVaciosException("La referencia es obligatoria");
         }
 
         if(marcaVehiculo == null){
-            LOGGER.log(Level.WARNING, "El telefono es obligatorio para el registro" );
-            throw new AtributosVaciosException("El telefono es obligatorio");
+            LOGGER.log(Level.WARNING, "La marca es obligatoria para el registro" );
+            throw new AtributosVaciosException("La marca es obligatoria");
         }
 
-        if(modelo == null || modelo .isBlank()){
+        if(modelo == "" || modelo.isEmpty()){
             LOGGER.log(Level.WARNING, "El modelo es obligatorio para el registro" );
             throw new AtributosVaciosException("El modelo es obligatorio");
         }
 
-        if(rutaImagenes == null){
+        if(imagenVehiculo == null || imagenVehiculo == ""){
             LOGGER.log(Level.WARNING, "La imagen es obligatoria para el registro" );
             throw new AtributosVaciosException("La imagen es obligatoria");
         }
@@ -309,7 +306,7 @@ public class Empresa {
                 .referencia(referencia)
                 .marcaVehiculo(marcaVehiculo)
                 .modelo(modelo)
-                .rutasImagenes(rutaImagenes)
+                .imagenVehiculo(imagenVehiculo)
                 .kilometraje(kilometraje)
                 .precioAlquiler(precioAlquiler)
                 .tipoCajaVehiculo(tipoCajaVehiculo)
@@ -318,7 +315,7 @@ public class Empresa {
 
         listaVehiculos.add(vehiculoNuevo);
 
-        LOGGER.log(Level.INFO, "Se ha registrado un nuevo cliente con cedula: " + placa + "");
+        LOGGER.log(Level.INFO, "Se ha registrado un nuevo vehiculo con placa: " + placa + "");
         return vehiculoNuevo;
     }
 
@@ -352,7 +349,7 @@ public class Empresa {
             throw new AtributosVaciosException("Es obligatoria la caja del vehiculo");
         }
 
-        if(vehiculoEncontrado != null){
+        if(vehiculoEncontrado == null){
             LOGGER.log(Level.SEVERE, "La placa " + placa + " no esta registrada" );
             throw new VehiculoNoRegistradoException("El vehiculo no esta registrado");
         }
@@ -368,7 +365,7 @@ public class Empresa {
      * @throws VehiculoNoRegistradoException
      */
 
-    public void eliminarVehiculo(String placa)throws VehiculoNoRegistradoException{
+    public void eliminarVehiculo(String placa) throws VehiculoNoRegistradoException{
         Vehiculo vehiculoPorEliminar = obtenerVehiculo(placa);
         for(Vehiculo vehiculo : listaVehiculos){
             if(vehiculo.getPlaca().equals(placa)){
@@ -379,7 +376,7 @@ public class Empresa {
             listaVehiculos.remove(vehiculoPorEliminar);
         }else{
             LOGGER.log(Level.SEVERE, "La placa " + placa + " no esta registrada" );
-            throw new VehiculoNoRegistradoException("El vehiculo con "+ placa + " no esta registrada");
+            throw new VehiculoNoRegistradoException("El vehiculo con "+ placa + " no esta registrado");
         }
     }
 
