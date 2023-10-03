@@ -160,6 +160,11 @@ public class Empresa {
 
         Cliente clienteEncontrado = obtenerCliente(cedula);
 
+        if(cedula == null || cedula.isBlank()){
+            LOGGER.log(Level.WARNING, "La cedula es obligatoria para el registro" );
+            throw new AtributosVaciosException("La cedula es obligatoria");
+        }
+
         if(nombre == null || nombre.isBlank()){
             LOGGER.log(Level.WARNING, "El nombre es obligatorio para el registro" );
             throw new AtributosVaciosException("El nombre es obligatorio");
@@ -185,10 +190,11 @@ public class Empresa {
             throw new AtributosVaciosException("La direccion es obligatoria");
         }
 
-        if(clienteEncontrado != null){
+        if(clienteEncontrado == null){
             LOGGER.log(Level.SEVERE, "La cedula " + cedula + " no esta registrada" );
             throw new ClienteNoRegistradoException("El cliente no ha sido registrado");
         }
+        clienteEncontrado.setCedula(cedula);
         clienteEncontrado.setNombre(nombre);
         clienteEncontrado.setTelefono(telefono);
         clienteEncontrado.setCiudad(ciudad);
@@ -352,7 +358,7 @@ public class Empresa {
             throw new AtributosVaciosException("Es obligatoria la caja del vehiculo");
         }
 
-        if(vehiculoEncontrado != null){
+        if(vehiculoEncontrado == null){
             LOGGER.log(Level.SEVERE, "La placa " + placa + " no esta registrada" );
             throw new VehiculoNoRegistradoException("El vehiculo no esta registrado");
         }
