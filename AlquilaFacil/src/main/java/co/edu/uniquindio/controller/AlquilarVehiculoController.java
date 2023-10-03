@@ -216,6 +216,10 @@ public class AlquilarVehiculoController implements Initializable {
         inicioController.show();
     }
 
+    /**
+     * Me muestra los vehiculos disponibles dada una fecha
+     * @param event
+     */
     @FXML
     void verVehiculosDisponibles(ActionEvent event) {
         try {
@@ -231,6 +235,12 @@ public class AlquilarVehiculoController implements Initializable {
 
     }
 
+    /**
+     * Obtiene la lista de vehiculos disponibles
+     * @param fechaInicial
+     * @param fechaFinal
+     * @return
+     */
     private ObservableList<Vehiculo> getListaVehiculosDisponibles(LocalDate fechaInicial, LocalDate fechaFinal) {
         listadoVehiculos.addAll(empresa.obtenerVehiculosDisponibles(fechaInicial, fechaFinal));
         return listadoVehiculos;
