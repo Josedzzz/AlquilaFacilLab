@@ -504,4 +504,23 @@ public class Empresa {
         return vehiculosAlquilados;
     }
 
+    /**
+     * Calcula el total ganado por registros entre una fecha inicial y una final
+     * @param fechaInicial
+     * @param fechaFinal
+     * @return
+     */
+    public double calcularTotalGanado(LocalDate fechaInicial, LocalDate fechaFinal) {
+        double total = 0.0;
+        for (Registro registro : listaRegistros) {
+            // Verifica si las fechas se solapan, si es así, el vehículo no está disponible
+            if (!(fechaFinal.isBefore(registro.getFechaInicio()) || fechaInicial.isAfter(registro.getFechaRegreso()))) {
+                total += registro.getPrecioFactura();
+            }
+        }
+        return total;
+    }
+
+    
+
 }
