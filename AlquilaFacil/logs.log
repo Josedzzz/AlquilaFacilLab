@@ -160,3 +160,7 @@ Oct 03, 2023 4:22:59 AM co.edu.uniquindio.model.Empresa <init>
 INFO: Se crea una nueva instancia de la empresa
 Oct 03, 2023 4:23:15 AM co.edu.uniquindio.model.Empresa crearVehiculo
 INFO: Se ha registrado un nuevo vehiculo con placa: 22
+Oct 03, 2023 4:39:51 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 4:40:07 AM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: aa

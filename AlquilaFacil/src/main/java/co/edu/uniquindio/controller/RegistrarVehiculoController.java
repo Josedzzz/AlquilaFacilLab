@@ -121,6 +121,32 @@ public class RegistrarVehiculoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Configuracion del idioma en el que se ven los textos de la app dependiendo el sistema operativo
+        lblTitulo.setText(propiedades.getResourceBundle().getString("lblTituloRegistrarVehiculoView"));
+        lblSubtitulo.setText(propiedades.getResourceBundle().getString("lblSubtituloRegistrarVehiculoView"));
+        txtPlaca.setPromptText(propiedades.getResourceBundle().getString("txtPlacaRegistrarVehiculoView"));
+        txtReferencia.setPromptText(propiedades.getResourceBundle().getString("txtReferenciaRegistrarVehiculoView"));
+        txtModelo.setPromptText(propiedades.getResourceBundle().getString("txtModeloRegistrarVehiculoView"));
+        txtKilometraje.setPromptText(propiedades.getResourceBundle().getString("txtKilometrajeRegistrarView"));
+        txtAlquiler.setPromptText(propiedades.getResourceBundle().getString("txtAlquilerRegistrarVehiculoView"));
+        txtNumSillas.setPromptText(propiedades.getResourceBundle().getString("txtNumSillasRegistrarVehiculoView"));
+        comboBoxTipoCaja.setPromptText(propiedades.getResourceBundle().getString("comboBoxTipoCajaRegistrarVehiculoView"));
+        comboBoxMarca.setPromptText(propiedades.getResourceBundle().getString("comboBoxMarcaRegistrarVehiculoView"));
+        btnSeleccionarImagen.setText(propiedades.getResourceBundle().getString("btnSeleccionarImagenRegistrarVehiculoView"));
+        btnCrear.setText(propiedades.getResourceBundle().getString("btnCrearRegistrarVehiculoView"));
+        btnNuevo.setText(propiedades.getResourceBundle().getString("btnNuevoRegistrarVehiculoView"));
+        btnActualizar.setText(propiedades.getResourceBundle().getString("btnActualizarRegistrarVehiculoView"));
+        btnEliminar.setText(propiedades.getResourceBundle().getString("btnEliminarRegistrarVehiculoView"));
+        columnPlaca.setText(propiedades.getResourceBundle().getString("columnPlacaRegistrarVehiculoView"));
+        columnReferencia.setText(propiedades.getResourceBundle().getString("columnReferenciaRegistrarVehiculoView"));
+        columnMarca.setText(propiedades.getResourceBundle().getString("columnMarcaRegitrarVehiculoView"));
+        columnModelo.setText(propiedades.getResourceBundle().getString("columnModeloRegistrarVehiculoView"));
+        columnKilometraje.setText(propiedades.getResourceBundle().getString("columnKilometrajeRegistrarVehiculoView"));
+        columnPrecio.setText(propiedades.getResourceBundle().getString("columnPrecioRegistrarVehiculoView"));
+        columnCaja.setText(propiedades.getResourceBundle().getString("columnCajaRegistrarVehiculoView"));
+        columnSillas.setText(propiedades.getResourceBundle().getString("columnNumSillasRegistrarVehiculoView"));
+        btnRegresar.setText(propiedades.getResourceBundle().getString("btnRegresarRegistrarVehiculoView"));
+
         //Datos de la tableView de vehiculos
         this.columnPlaca.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getPlaca()));
         this.columnReferencia.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getReferencia()));
