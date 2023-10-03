@@ -1,10 +1,15 @@
 package co.edu.uniquindio.controller;
 
 import co.edu.uniquindio.app.AlquilaFacilApp;
+import co.edu.uniquindio.exceptions.AtributosVaciosException;
+import co.edu.uniquindio.exceptions.FechaInvalidaException;
 import co.edu.uniquindio.model.Empresa;
 import co.edu.uniquindio.model.Propiedades;
 import co.edu.uniquindio.model.Registro;
 import co.edu.uniquindio.model.Vehiculo;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class DatosEmpresaController implements Initializable {
@@ -141,6 +147,10 @@ public class DatosEmpresaController implements Initializable {
     private AlquilaFacilApp alquilaFacilApp;
     private Stage stage;
     private InicioController inicioController;
+    private ObservableList<Vehiculo> listadoVehiculos = FXCollections.observableArrayList();
+    private Vehiculo vehiculoSeleccion;
+    private LocalDate fechaInicialFiltrarRegistro;
+    private LocalDate fechaFinalFiltrarRegistro;
 
     //Uso del singleton
     private final Empresa empresa = Empresa.getInstance();
@@ -191,6 +201,42 @@ public class DatosEmpresaController implements Initializable {
         columnFechaRegistroGanancias.setText(propiedades.getResourceBundle().getString("columnFechaRegistroGananciasDatosEmpresaView"));
         columnFechaInicalGanancias.setText(propiedades.getResourceBundle().getString("lblFechaInicialRegistroDatosEmpresaView"));
         columnFechaFinalGanancias.setText(propiedades.getResourceBundle().getString("lblFechaFinalRegistroDatosEmpresaView"));
+
+        //Datos de la tableView de vehiculos
+        this.columnPlacaRegistro.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getPlaca()));
+        this.columnReferenciaRegistro.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getReferencia()));
+        this.columnMarcaRegistro.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMarcaVehiculo().toString()));
+        this.columnModeloRegistro.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getModelo()));
+        this.columnKilometrajeRegistro.setCellValueFactory(e -> {
+            double kilometraje = e.getValue().getKilometraje();
+            String kilometrajeString = String.valueOf(kilometraje);
+            return new ReadOnlyStringWrapper(kilometrajeString);
+        });
+        this.columnPrecioRegistro.setCellValueFactory(e -> {
+            double precio = e.getValue().getPrecioAlquiler();
+            String precioString = String.valueOf(precio);
+            return new ReadOnlyStringWrapper(precioString);
+        });
+        this.columnCajaRegistro.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getTipoCajaVehiculo().toString()));
+        this.columnSillasRegistro.setCellValueFactory( e -> {
+            int sillas = e.getValue().getNumSillas();
+            String sillasString = String.valueOf(sillas);
+            return new ReadOnlyStringWrapper(sillasString);
+        });
+        //Selecciono vehiculos de la tabla
+        tableViewVehiculosRegistro.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                vehiculoSeleccion = newSelection;
+                vehiculoSeleccion = tableViewVehiculosRegistro.getSelectionModel().getSelectedItem();
+            }
+        });
+        //Menejo de la fecha inicial y de la fecha final para los filtros
+        dateFechaInicialRegistro.setOnAction(event -> {
+            fechaInicialFiltrarRegistro = dateFechaInicialRegistro.getValue();
+        });
+        dateFechaFinalRegistro.setOnAction(event -> {
+            fechaFinalFiltrarRegistro = dateFechaFinalRegistro.getValue();
+        });
     }
 
     @FXML
@@ -225,6 +271,41 @@ public class DatosEmpresaController implements Initializable {
 
     @FXML
     void verVehiculosAlquiladosRegistro(ActionEvent event) {
+        try {
+            empresa.validarFechas(fechaInicialFiltrarRegistro, fechaFinalFiltrarRegistro);
+            tableViewVehiculosRegistro.getItems().clear();
+            tableViewVehiculosRegistro.setItems(getListaVehiculosAlquilados(fechaInicialFiltrarRegistro, fechaFinalFiltrarRegistro));
+            mostrarMensaje("Notificación AlquilaFacil", "Información valida", "El filtro de vehiculos se ha realizado de forma correcta", Alert.AlertType.INFORMATION);
+        } catch (AtributosVaciosException e) {
+            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+        } catch (FechaInvalidaException e) {
+            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
 
+    /**
+     * Obtiene la lista de vehiculos alquilados
+     * @param fechaInicial
+     * @param fechaFinal
+     * @return
+     */
+    private ObservableList<Vehiculo> getListaVehiculosAlquilados(LocalDate fechaInicial, LocalDate fechaFinal) {
+        listadoVehiculos.addAll(empresa.obtenerVehiculosAlquilados(fechaInicial, fechaFinal));
+        return listadoVehiculos;
+    }
+
+    /**
+     * Muestra un mensaje dependiendo con el tipo de alerta seleccionado
+     * @param title
+     * @param header
+     * @param content
+     * @param alertType
+     */
+    public void mostrarMensaje(String title, String header, String content, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

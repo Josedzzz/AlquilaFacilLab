@@ -479,4 +479,24 @@ public class Empresa {
         }
     }
 
+
+    //FUNCIONES PARA DATOS DE LA EMPRESA ============================================================================
+
+    /**
+     * Lista de vehiculos alquilados
+     * @param fechaInicial fecha inical a revisar
+     * @param fechaFinal fecha final a revisar
+     * @return lista de vehiculos alquilados entre la fechas que pasan como parametro
+     */
+    public ArrayList<Vehiculo> obtenerVehiculosAlquilados(LocalDate fechaInicial, LocalDate fechaFinal) {
+        ArrayList<Vehiculo> vehiculosAlquilados = new ArrayList<>();
+        for (Registro registro : listaRegistros) {
+            // Verifica si las fechas se solapan, si es así, el vehículo no está disponible
+            if (!(fechaFinal.isBefore(registro.getFechaInicio()) || fechaInicial.isAfter(registro.getFechaRegreso()))) {
+                vehiculosAlquilados.add(registro.getVehiculo());
+            }
+        }
+        return vehiculosAlquilados;
+    }
+
 }
