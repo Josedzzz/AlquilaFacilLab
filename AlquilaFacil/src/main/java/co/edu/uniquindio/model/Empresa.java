@@ -202,6 +202,7 @@ public class Empresa {
         clienteEncontrado.setTelefono(telefono);
         clienteEncontrado.setCiudad(ciudad);
         clienteEncontrado.setDireccion(direccion);
+        LOGGER.log(Level.INFO, "Se actualizaron los datos del cliente: " + cedula);
     }
 
     /**
@@ -219,6 +220,7 @@ public class Empresa {
         }
         if(clientePorEliminar != null){
             listaClientes.remove(clientePorEliminar);
+            LOGGER.log(Level.INFO, "Se elimino el cliente");
         }else{
             LOGGER.log(Level.SEVERE, "La cedula " + cedula + " no esta registrada" );
             throw new ClienteNoRegistradoException("El cliente con cedula" + cedula + " no esta registrado");
@@ -302,7 +304,7 @@ public class Empresa {
         }
 
         if(numSillas < 0){
-            LOGGER.log(Level.WARNING, "El numero debe ser mayor a 0" );
+            LOGGER.log(Level.WARNING, "El numero de sillas debe ser mayor a 0" );
             throw new AtributoNegativoException("El mumero de sillas no puede ser negativo");
         }
 
@@ -366,6 +368,7 @@ public class Empresa {
         vehiculoEncontrado.setKilometraje(kilometraje);
         vehiculoEncontrado.setPrecioAlquiler(precioAlquiler);
         vehiculoEncontrado.setTipoCajaVehiculo(tipoCajaVehiculo);
+        LOGGER.log(Level.INFO, "Los datos del vehículo " + placa + " fueron actualizados");
     }
 
 
@@ -384,6 +387,7 @@ public class Empresa {
         }
         if(vehiculoPorEliminar != null){
             listaVehiculos.remove(vehiculoPorEliminar);
+            LOGGER.log(Level.INFO, "El vehiculo fue eliminado");
         }else{
             LOGGER.log(Level.SEVERE, "La placa " + placa + " no esta registrada" );
             throw new VehiculoNoRegistradoException("El vehiculo con "+ placa + " no esta registrado");
@@ -444,6 +448,7 @@ public class Empresa {
                 .precioFactura(precio)
                 .build();
         listaRegistros.add(registro);
+        LOGGER.log(Level.INFO, "Un registro fue creado de manera exitosa");
         return registro;
     }
 
