@@ -194,15 +194,15 @@ public class AlquilarVehiculoController implements Initializable {
                     fechaInicialFiltrar,
                     fechaFinalFiltrar
             );
-            mostrarMensaje("Notificación AlquilaFacil", "Información valida", "Se ha creado el registro correctamente con un costo de: " + registro.getPrecioFactura(), Alert.AlertType.INFORMATION);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderAfirmativo"), propiedades.getResourceBundle().getString("generarFacturaAlquilar") + " " + registro.getPrecioFactura(), Alert.AlertType.INFORMATION);
             tableViewVehiculosDisponibles.getItems().clear();
             limpiarCampos();
         } catch (ClienteNoRegistradoException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         } catch (AtributosVaciosException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         } catch (FechaInvalidaException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
@@ -226,11 +226,11 @@ public class AlquilarVehiculoController implements Initializable {
             empresa.validarFechas(fechaInicialFiltrar, fechaFinalFiltrar);
             tableViewVehiculosDisponibles.getItems().clear();
             tableViewVehiculosDisponibles.setItems(getListaVehiculosDisponibles(fechaInicialFiltrar, fechaFinalFiltrar));
-            mostrarMensaje("Notificación AlquilaFacil", "Información valida", "El filtro de vehiculos se ha realizado de forma correcta", Alert.AlertType.INFORMATION);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), "Información valida", "El filtro de vehiculos se ha realizado de forma correcta", Alert.AlertType.INFORMATION);
         } catch (AtributosVaciosException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         } catch (FechaInvalidaException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         }
 
     }

@@ -230,3 +230,15 @@ Oct 03, 2023 10:09:50 PM co.edu.uniquindio.model.Empresa <init>
 INFO: Se crea una nueva instancia de la empresa
 Oct 03, 2023 10:41:03 PM co.edu.uniquindio.model.Empresa <init>
 INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 10:49:40 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 10:50:23 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 10:54:40 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 10:54:56 PM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 11
+Oct 03, 2023 10:55:10 PM co.edu.uniquindio.model.Empresa crearRegistro
+WARNING: La cédula del cliente es un campo obligatorio
+Oct 03, 2023 10:55:17 PM co.edu.uniquindio.model.Empresa crearRegistro
+INFO: Un registro fue creado de manera exitosa
