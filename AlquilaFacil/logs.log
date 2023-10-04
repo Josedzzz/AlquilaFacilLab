@@ -242,3 +242,5 @@ Oct 03, 2023 10:55:10 PM co.edu.uniquindio.model.Empresa crearRegistro
 WARNING: La cédula del cliente es un campo obligatorio
 Oct 03, 2023 10:55:17 PM co.edu.uniquindio.model.Empresa crearRegistro
 INFO: Un registro fue creado de manera exitosa
+Oct 03, 2023 11:09:27 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa

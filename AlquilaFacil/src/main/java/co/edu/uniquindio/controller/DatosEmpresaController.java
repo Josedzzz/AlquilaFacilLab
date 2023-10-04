@@ -277,11 +277,11 @@ public class DatosEmpresaController implements Initializable {
             tableViewRegistrosGanancias.getItems().clear();
             tableViewRegistrosGanancias.setItems(getRegistrosEnFechas(fechaInicialFiltrarGanancias, fechaFinalFiltrarGanancias));
             txtGanancias.setText(String.valueOf(ganancias));
-            mostrarMensaje("Notificación AlquilaFacil", "Información valida", "Las ganancias en el rango de fechas fueron de: " + ganancias, Alert.AlertType.INFORMATION);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderAfirmativo"), propiedades.getResourceBundle().getString("generarTotalGanandoGanancias") + " " + ganancias, Alert.AlertType.INFORMATION);
         } catch (AtributosVaciosException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         } catch (FechaInvalidaException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
@@ -319,9 +319,9 @@ public class DatosEmpresaController implements Initializable {
         try {
             MarcaVehiculo marcaVehiculo = empresa.encontrarMarcaMasAlquilada();
             txtMarcaGanancias.setText(marcaVehiculo.toString());
-            mostrarMensaje("Notificación AlquilaFacil", "Información valida", "La marca más alquilada es: " + marcaVehiculo.toString(), Alert.AlertType.INFORMATION);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderAfirmativo"), propiedades.getResourceBundle().getString("verMarcaVehiculoGanancias") + " " + marcaVehiculo.toString(), Alert.AlertType.INFORMATION);
         } catch (ListaVaciaException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
@@ -331,11 +331,11 @@ public class DatosEmpresaController implements Initializable {
             empresa.validarFechas(fechaInicialFiltrarRegistro, fechaFinalFiltrarRegistro);
             tableViewVehiculosRegistro.getItems().clear();
             tableViewVehiculosRegistro.setItems(getListaVehiculosAlquilados(fechaInicialFiltrarRegistro, fechaFinalFiltrarRegistro));
-            mostrarMensaje("Notificación AlquilaFacil", "Información valida", "El filtro de vehiculos se ha realizado de forma correcta", Alert.AlertType.INFORMATION);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderAfirmativo"), propiedades.getResourceBundle().getString("verVehiculosAlquiladosRegistro"), Alert.AlertType.INFORMATION);
         } catch (AtributosVaciosException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         } catch (FechaInvalidaException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
