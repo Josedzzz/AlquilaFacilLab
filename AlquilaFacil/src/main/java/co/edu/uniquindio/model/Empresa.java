@@ -56,6 +56,7 @@ public class Empresa {
         if (empresa == null) {
             empresa = new Empresa();
         }
+        LOGGER.log(Level.INFO, "Se ha instanciado empresa");
         return empresa;
     }
 
@@ -142,9 +143,7 @@ public class Empresa {
                 .direccion(direccion)
                 .build();
 
-
         listaClientes.add(clienteNuevo);
-
         LOGGER.log(Level.INFO, "Se ha registrado un nuevo cliente con cedula: " + cedula + "");
         return clienteNuevo;
     }
@@ -157,7 +156,7 @@ public class Empresa {
      * @param email
      * @param ciudad
      * @param direccion
-     * @throw ClienteNoRegistradoException
+     * @throws ClienteNoRegistradoException
      */
 
     public void actualizarCliente(String cedula, String nombre, String telefono, String email, String ciudad, String direccion)throws AtributosVaciosException, ClienteNoRegistradoException{
@@ -202,6 +201,7 @@ public class Empresa {
         clienteEncontrado.setTelefono(telefono);
         clienteEncontrado.setCiudad(ciudad);
         clienteEncontrado.setDireccion(direccion);
+        LOGGER.log(Level.INFO, "Se ha actualizado el cliente con cedula: " + cedula + "");
     }
 
     /**
@@ -218,6 +218,7 @@ public class Empresa {
             }
         }
         if(clientePorEliminar != null){
+            LOGGER.log(Level.INFO, "Se ha eliminado el cliente con cedula: " + cedula + "");
             listaClientes.remove(clientePorEliminar);
         }else{
             LOGGER.log(Level.SEVERE, "La cedula " + cedula + " no esta registrada" );
@@ -324,7 +325,6 @@ public class Empresa {
                 .build();
 
         listaVehiculos.add(vehiculoNuevo);
-
         LOGGER.log(Level.INFO, "Se ha registrado un nuevo vehiculo con placa: " + placa + "");
         return vehiculoNuevo;
     }
@@ -366,6 +366,7 @@ public class Empresa {
         vehiculoEncontrado.setKilometraje(kilometraje);
         vehiculoEncontrado.setPrecioAlquiler(precioAlquiler);
         vehiculoEncontrado.setTipoCajaVehiculo(tipoCajaVehiculo);
+        LOGGER.log(Level.INFO, "Se ha actualizado el vehículo con placa: " + placa + "");
     }
 
 
@@ -383,6 +384,7 @@ public class Empresa {
             }
         }
         if(vehiculoPorEliminar != null){
+            LOGGER.log(Level.INFO, "Se ha eliminado el vehículo con placa: " + placa + "");
             listaVehiculos.remove(vehiculoPorEliminar);
         }else{
             LOGGER.log(Level.SEVERE, "La placa " + placa + " no esta registrada" );
@@ -444,6 +446,7 @@ public class Empresa {
                 .precioFactura(precio)
                 .build();
         listaRegistros.add(registro);
+        LOGGER.log(Level.INFO, "Se ha creado un nuevo registro asignado a la cedula: " + cedulaCliente + "");
         return registro;
     }
 
@@ -463,6 +466,7 @@ public class Empresa {
         }
         // Ordena los vehículos por precio de alquiler de menor a mayor
         Collections.sort(vehiculosDisponibles, Comparator.comparingDouble(Vehiculo::getPrecioAlquiler));
+        LOGGER.log(Level.INFO, "Los vehículos " + vehiculosDisponibles + "se encuentran disponibles");
         return vehiculosDisponibles;
     }
 
@@ -474,12 +478,15 @@ public class Empresa {
      */
     public void validarFechas(LocalDate fechaInicial, LocalDate fechaFinal) throws FechaInvalidaException, AtributosVaciosException {
         if (fechaInicial == null) {
+            LOGGER.log(Level.WARNING, "La fecha de inicio no se ha seleccionado");
             throw new AtributosVaciosException("Debe seleccionar un valor en la fecha inicial");
         }
         if (fechaFinal == null) {
+            LOGGER.log(Level.WARNING, "La fecha final no se ha seleccionado");
             throw new AtributosVaciosException("Debe seleccionar un valor en la fecha final");
         }
         if (!fechaInicial.isBefore(fechaFinal)) {
+            LOGGER.log(Level.WARNING, "La fecha inicial no puede ser mayor a la fecha final");
             throw new FechaInvalidaException("La fecha inicial no puede estar después de la fecha final");
         }
     }
@@ -501,6 +508,7 @@ public class Empresa {
                 vehiculosAlquilados.add(registro.getVehiculo());
             }
         }
+        LOGGER.log(Level.INFO, "Los vehículos " + vehiculosAlquilados + "se encuentran alquilados");
         return vehiculosAlquilados;
     }
 
@@ -518,6 +526,7 @@ public class Empresa {
                 total += registro.getPrecioFactura();
             }
         }
+        LOGGER.log(Level.INFO, "El total ganado es: " + total + "");
         return total;
     }
 
