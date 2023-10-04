@@ -279,15 +279,15 @@ public class RegistrarVehiculoController implements Initializable {
             limpiarCamposVehiculo();
             tableViewVehiculos.getItems().clear();
             tableViewVehiculos.setItems(getListaVehiculos());
-            mostrarMensaje("Notificación AlquilaFacil", "Información valida", "El vehiculo ha sido actualizado de manera correcta", Alert.AlertType.INFORMATION);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderAfirmativo"), propiedades.getResourceBundle().getString("actualizarVehiculoController"), Alert.AlertType.INFORMATION);
         } catch (VehiculoNoRegistradoException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         } catch (AtributoNegativoException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         } catch (AtributosVaciosException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         } catch (NumberFormatException e) {
-            mostrarMensaje("Notificación ALquilaFacil", "Información invalida", "Asegurese de que en el apartado kilometraje, alquiler o sillas solo hayan numeros", Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), propiedades.getResourceBundle().getString("actualizarVehiculoControllerNegativo"), Alert.AlertType.ERROR);
         }
     }
 
@@ -312,15 +312,15 @@ public class RegistrarVehiculoController implements Initializable {
             limpiarCamposVehiculo();
             tableViewVehiculos.getItems().clear();
             tableViewVehiculos.setItems(getListaVehiculos());
-            mostrarMensaje("Notificación AlquilaFacil", "Información valida", "El vehiculo ha sido registrado de manera correcta", Alert.AlertType.INFORMATION);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderAfirmativo"), propiedades.getResourceBundle().getString("crearVehiculoController"), Alert.AlertType.INFORMATION);
         } catch (VehiculoYaExistenteException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         } catch (AtributoNegativoException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         } catch (AtributosVaciosException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         } catch (NumberFormatException e) {
-            mostrarMensaje("Notificación ALquilaFacil", "Información invalida", "Asegurese de que en el apartado kilometraje, alquiler o sillas solo hayan numeros", Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), propiedades.getResourceBundle().getString("actualizarVehiculoControllerNegativo"), Alert.AlertType.ERROR);
         }
     }
 
@@ -337,12 +337,12 @@ public class RegistrarVehiculoController implements Initializable {
                 limpiarCamposVehiculo();
                 tableViewVehiculos.getItems().clear();
                 tableViewVehiculos.setItems(getListaVehiculos());
-                mostrarMensaje("Notificación AlquilaFacil", "Información valida", "El vehiculo ha sido eliminado de manera correcta", Alert.AlertType.INFORMATION);
+                mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderAfirmativo"), propiedades.getResourceBundle().getString("eliminarVehiculoController"), Alert.AlertType.INFORMATION);
             } else {
-                mostrarMensaje("Notificación AlquilaFacil", "Información invalida", "Por favor seleccione un vehículo en la tabla", Alert.AlertType.INFORMATION);
+                mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), propiedades.getResourceBundle().getString("eliminarVehiculoControllerNegativo"), Alert.AlertType.INFORMATION);
             }
         } catch (VehiculoNoRegistradoException e) {
-            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+            mostrarMensaje(propiedades.getResourceBundle().getString("mostrarMensajeTitulo"), propiedades.getResourceBundle().getString("mostrarMensajeHeaderNegativo"), e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
