@@ -267,11 +267,9 @@ public class RegistrarClienteController implements Initializable {
             mostrarMensaje("Notificacion AlquilaFacil", "Cliente Registrado", "El cliente " + txtNombre.getText() +
                     "ha sido registrado", Alert.AlertType.INFORMATION);
         } catch (AtributosVaciosException e){
-            mostrarMensaje("Notificacion AlquilaFacil", "Los campos estan vacios", "Los campos en el registro del cliente" +
-                    " estan vacios", Alert.AlertType.WARNING);
+            mostrarMensaje("Notificacion AlquilaFacil", "Los campos estan vacios", e.getMessage(), Alert.AlertType.WARNING);
         } catch (CLienteYaExistenteException e) {
-            mostrarMensaje("Notificacion AlquilaFacil", "Cliente no registrado", "El cliente con cedula" + txtCedula.getText() +
-                    " ya existe", Alert.AlertType.WARNING);
+            mostrarMensaje("Notificacion AlquilaFacil", "Cliente no registrado", e.getMessage(), Alert.AlertType.WARNING);
         }
     }
 

@@ -25,6 +25,7 @@ public class Empresa {
     @Getter
     private ArrayList<Registro> listaRegistros;
     private static final Logger LOGGER = Logger.getLogger(Empresa.class.getName());
+    private final Propiedades propiedades = Propiedades.getInstance();
 
     //Variable que tendra la instancia de esta clase
     private static Empresa empresa;
@@ -100,37 +101,38 @@ public class Empresa {
 
         if(cedula == null || cedula.isBlank()){
             LOGGER.log(Level.WARNING, "La cedula es obligatoria para el registro" );
-            throw new AtributosVaciosException("La cedula es obligatoria");
+            //throw new AtributosVaciosException("La cedula es obligatoria");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearClienteCedula"));
         }
 
         if(nombre == null || nombre.isBlank()){
             LOGGER.log(Level.WARNING, "El nombre es obligatorio para el registro" );
-            throw new AtributosVaciosException("El nombre es obligatorio");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearClienteNombre"));
         }
 
         if(telefono == null || telefono.isBlank()){
             LOGGER.log(Level.WARNING, "El telefono es obligatorio para el registro" );
-            throw new AtributosVaciosException("El telefono es obligatorio");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearCLienteTelefono"));
         }
 
         if(email == null || email.isBlank()){
             LOGGER.log(Level.WARNING, "El email es obligatorio para el registro" );
-            throw new AtributosVaciosException("El email es obligatorio");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearClienteEmail"));
         }
 
         if(ciudad == null || ciudad.isBlank()){
             LOGGER.log(Level.WARNING, "La ciudad es obligatoria para el registro" );
-            throw new AtributosVaciosException("La ciudad es obligatoria");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearClienteCiudad"));
         }
 
         if(direccion == null || direccion.isBlank()){
             LOGGER.log(Level.WARNING, "La direccion es obligatoria para el registro" );
-            throw new AtributosVaciosException("La direccion es obligatoria");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearClienteDireccion"));
         }
 
         if(clienteEncontrado != null){
             LOGGER.log(Level.SEVERE, "La cedula " + cedula + " ya esta registrada" );
-            throw new CLienteYaExistenteException("El cliente ya existe");
+            throw new CLienteYaExistenteException(propiedades.getResourceBundle().getString("crearClienteExiste"));
         }
 
         Cliente clienteNuevo = Cliente.builder()
@@ -166,37 +168,37 @@ public class Empresa {
 
         if(cedula == null || cedula.isBlank()){
             LOGGER.log(Level.WARNING, "La cedula es obligatoria para el registro" );
-            throw new AtributosVaciosException("La cedula es obligatoria");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearClienteCedula"));
         }
 
         if(nombre == null || nombre.isBlank()){
             LOGGER.log(Level.WARNING, "El nombre es obligatorio para el registro" );
-            throw new AtributosVaciosException("El nombre es obligatorio");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearClienteNombre"));
         }
 
         if(telefono == null || telefono.isBlank()){
             LOGGER.log(Level.WARNING, "El telefono es obligatorio para el registro" );
-            throw new AtributosVaciosException("El telefono es obligatorio");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearCLienteTelefono"));
         }
 
         if(email == null || email.isBlank()){
             LOGGER.log(Level.WARNING, "El email es obligatorio para el registro" );
-            throw new AtributosVaciosException("El email es obligatorio");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearClienteEmail"));
         }
 
         if(ciudad == null || ciudad.isBlank()){
             LOGGER.log(Level.WARNING, "La ciudad es obligatoria para el registro" );
-            throw new AtributosVaciosException("La ciudad es obligatoria");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearClienteCiudad"));
         }
 
         if(direccion == null || direccion.isBlank()){
             LOGGER.log(Level.WARNING, "La direccion es obligatoria para el registro" );
-            throw new AtributosVaciosException("La direccion es obligatoria");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearClienteDireccion"));
         }
 
         if(clienteEncontrado == null){
             LOGGER.log(Level.SEVERE, "La cedula " + cedula + " no esta registrada" );
-            throw new ClienteNoRegistradoException("El cliente no ha sido registrado");
+            throw new ClienteNoRegistradoException(propiedades.getResourceBundle().getString("actualizarClienteNoExiste"));
         }
         clienteEncontrado.setNombre(nombre);
         clienteEncontrado.setTelefono(telefono);
@@ -223,7 +225,7 @@ public class Empresa {
             LOGGER.log(Level.INFO, "Se elimino el cliente");
         }else{
             LOGGER.log(Level.SEVERE, "La cedula " + cedula + " no esta registrada" );
-            throw new ClienteNoRegistradoException("El cliente con cedula" + cedula + " no esta registrado");
+            throw new ClienteNoRegistradoException(propiedades.getResourceBundle().getString("actualizarClienteNoExiste"));
         }
     }
 
@@ -265,52 +267,52 @@ public class Empresa {
 
         if(placa == "" || placa.isEmpty()){
             LOGGER.log(Level.WARNING, "La placa es obligatoria para el registro" );
-            throw new AtributosVaciosException("La placa es obligatoria");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearVehiculoPlaca"));
         }
 
         if(referencia == "" || referencia.isEmpty()){
             LOGGER.log(Level.WARNING, "La referencia es obligatoria para el registro" );
-            throw new AtributosVaciosException("La referencia es obligatoria");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearVehiculoReferencia"));
         }
 
         if(marcaVehiculo == null){
             LOGGER.log(Level.WARNING, "La marca es obligatoria para el registro" );
-            throw new AtributosVaciosException("La marca es obligatoria");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearVehiculoMarca"));
         }
 
         if(modelo == "" || modelo.isEmpty()){
             LOGGER.log(Level.WARNING, "El modelo es obligatorio para el registro" );
-            throw new AtributosVaciosException("El modelo es obligatorio");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearVehiculoModelo"));
         }
 
         if(imagenVehiculo == null || imagenVehiculo == ""){
             LOGGER.log(Level.WARNING, "La imagen es obligatoria para el registro" );
-            throw new AtributosVaciosException("La imagen es obligatoria");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearVehiculoImagen"));
         }
 
         if(kilometraje < 0){
             LOGGER.log(Level.WARNING, "El kilometraje debe ser mayor a 0" );
-            throw new AtributoNegativoException("El kilometraje no puede ser negativo");
+            throw new AtributoNegativoException(propiedades.getResourceBundle().getString("crearVehiculoKilometraje"));
         }
 
         if(precioAlquiler < 0){
             LOGGER.log(Level.WARNING, "El precio debe ser mayor a 0" );
-            throw new AtributoNegativoException("El precio no puede ser negativo");
+            throw new AtributoNegativoException(propiedades.getResourceBundle().getString("crearVehiculoPrecio"));
         }
 
         if(tipoCajaVehiculo == null){
             LOGGER.log(Level.WARNING, "La caja del vehiculo es obligatoria para el registro" );
-            throw new AtributosVaciosException("Es obligatoria la caja del vehiculo");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearVehiculoCaja"));
         }
 
         if(numSillas < 0){
             LOGGER.log(Level.WARNING, "El numero de sillas debe ser mayor a 0" );
-            throw new AtributoNegativoException("El mumero de sillas no puede ser negativo");
+            throw new AtributoNegativoException(propiedades.getResourceBundle().getString("crearVehiculoSillas"));
         }
 
         if(vehiculoAsociado != null){
             LOGGER.log(Level.SEVERE, "La placa " + placa + " ya esta registrada" );
-            throw new VehiculoYaExistenteException("La placa ya existe");
+            throw new VehiculoYaExistenteException(propiedades.getResourceBundle().getString("crearVehiculoExiste"));
         }
 
         Vehiculo vehiculoNuevo = Vehiculo.builder()
@@ -348,22 +350,22 @@ public class Empresa {
 
         if(kilometraje < 0){
             LOGGER.log(Level.WARNING, "El kilometraje debe ser mayor a 0" );
-            throw new AtributoNegativoException("El kilometraje no puede ser negativo");
+            throw new AtributoNegativoException(propiedades.getResourceBundle().getString("crearVehiculoKilometraje"));
         }
 
         if(precioAlquiler < 0){
             LOGGER.log(Level.WARNING, "El precio debe ser mayor a 0" );
-            throw new AtributoNegativoException("El precio no puede ser negativo");
+            throw new AtributoNegativoException(propiedades.getResourceBundle().getString("crearVehiculoPrecio"));
         }
 
         if(tipoCajaVehiculo == null){
             LOGGER.log(Level.WARNING, "La caja del vehiculo es obligatoria para podre actualizar" );
-            throw new AtributosVaciosException("Es obligatoria la caja del vehiculo");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearVehiculoCaja"));
         }
 
         if(vehiculoEncontrado == null){
             LOGGER.log(Level.SEVERE, "La placa " + placa + " no esta registrada" );
-            throw new VehiculoNoRegistradoException("El vehiculo no esta registrado");
+            throw new VehiculoNoRegistradoException(propiedades.getResourceBundle().getString("actualizarVehiculo"));
         }
         vehiculoEncontrado.setKilometraje(kilometraje);
         vehiculoEncontrado.setPrecioAlquiler(precioAlquiler);
@@ -390,7 +392,7 @@ public class Empresa {
             LOGGER.log(Level.INFO, "El vehiculo fue eliminado");
         }else{
             LOGGER.log(Level.SEVERE, "La placa " + placa + " no esta registrada" );
-            throw new VehiculoNoRegistradoException("El vehiculo con "+ placa + " no esta registrado");
+            throw new VehiculoNoRegistradoException(propiedades.getResourceBundle().getString("actualizarVehiculo"));
         }
     }
 
@@ -411,30 +413,30 @@ public class Empresa {
     public Registro crearRegistro(String cedulaCliente, Vehiculo vehiculo, LocalDate fechaInicial, LocalDate fechaFinal) throws AtributosVaciosException, FechaInvalidaException, ClienteNoRegistradoException {
         if (cedulaCliente == null || cedulaCliente.equals("")) {
             LOGGER.log(Level.WARNING, "La cédula del cliente es un campo obligatorio");
-            throw new AtributosVaciosException("La cédula del cliente es un campo obligatorio");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearRegistroCedulaCliente"));
         }
         if (vehiculo == null) {
             LOGGER.log(Level.WARNING, "El vehiculo es un campo obligatorio");
-            throw new AtributosVaciosException("Es necesario seleccionar un vehículo");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearRegistroVehiculo"));
         }
         if (fechaInicial == null) {
             LOGGER.log(Level.WARNING, "La fecha de inicio es un campo obligatorio");
-            throw new AtributosVaciosException("Debe seleccionar un valor en la fecha inicial");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearRegistroFechaInicial"));
         }
         if (fechaFinal == null) {
             LOGGER.log(Level.WARNING, "La fecha final es un campo obligatorio");
-            throw new AtributosVaciosException("Debe seleccionar un valor en la fecha final");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("crearRegistroFechaFinal"));
         }
         if (!fechaInicial.isBefore(fechaFinal)) {
             LOGGER.log(Level.WARNING, "La fecha inicial no puede ser mayor a la fecha final");
-            throw new FechaInvalidaException("La fecha inicial no puede estar después de la fecha final");
+            throw new FechaInvalidaException(propiedades.getResourceBundle().getString("crearRegistroFechaError"));
         }
         //Calcula los dias
         long dias = fechaInicial.until(fechaFinal, ChronoUnit.DAYS);
         Cliente cliente = obtenerCliente(cedulaCliente);
         if (cliente == null) {
             LOGGER.log(Level.WARNING, "La fecha inicial no puede ser mayor a la fecha final");
-            throw new ClienteNoRegistradoException("No existe un cliente que tenga esta cédula");
+            throw new ClienteNoRegistradoException(propiedades.getResourceBundle().getString("crearRegistroClienteError"));
         }
         //Calculo el precio para la factura
         double precio = vehiculo.getPrecioAlquiler() * dias;
@@ -479,13 +481,13 @@ public class Empresa {
      */
     public void validarFechas(LocalDate fechaInicial, LocalDate fechaFinal) throws FechaInvalidaException, AtributosVaciosException {
         if (fechaInicial == null) {
-            throw new AtributosVaciosException("Debe seleccionar un valor en la fecha inicial");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("validarFechasFechaInicial"));
         }
         if (fechaFinal == null) {
-            throw new AtributosVaciosException("Debe seleccionar un valor en la fecha final");
+            throw new AtributosVaciosException(propiedades.getResourceBundle().getString("validarFechasFechaFinal"));
         }
         if (!fechaInicial.isBefore(fechaFinal)) {
-            throw new FechaInvalidaException("La fecha inicial no puede estar después de la fecha final");
+            throw new FechaInvalidaException(propiedades.getResourceBundle().getString("validarFechasFechaError"));
         }
     }
 
@@ -549,7 +551,7 @@ public class Empresa {
      */
     public MarcaVehiculo encontrarMarcaMasAlquilada() throws ListaVaciaException {
         if (listaRegistros == null || listaRegistros.isEmpty()) {
-            throw new ListaVaciaException("No existen registros para determinar cual es el vehiculo más alquilado");
+            throw new ListaVaciaException(propiedades.getResourceBundle().getString("encontrarMarcaMasAlquiladaListaVacia"));
         }
         int[] conteoMarcas = new int[MarcaVehiculo.values().length];
         // Inicializa el conteo de cada marca en 0
