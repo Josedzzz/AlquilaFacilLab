@@ -2,13 +2,15 @@ package co.edu.uniquindio.model;
 
 import co.edu.uniquindio.exceptions.*;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,6 +42,8 @@ public class Empresa {
         }
         LOGGER.log(Level.INFO, "Se crea una nueva instancia de la empresa");
         this.listaClientes = new ArrayList<Cliente>();
+        Cliente cliente = new Cliente("111", "Jose", "111", "111", "Armenia", "111");
+        listaClientes.add(cliente);
         this.listaVehiculos = new ArrayList<Vehiculo>();
         this.listaRegistros = new ArrayList<Registro>();
     }
@@ -90,7 +94,7 @@ public class Empresa {
 
     //Validar atributos vacios cambiar el boolean y convertir a cliente retornando el objeto cliente
 
-    public Cliente crearCliente(String cedula, String nombre, String telefono, String email, String ciudad, String direccion) throws AtributosVaciosException, CLienteYaExistenteException{
+    public Cliente crearCliente(String cedula, String nombre, String telefono, String email, String ciudad, String direccion) throws AtributosVaciosException, CLienteYaExistenteException {
 
         Cliente clienteEncontrado = obtenerCliente(cedula);
 
@@ -138,9 +142,7 @@ public class Empresa {
                 .direccion(direccion)
                 .build();
 
-
         listaClientes.add(clienteNuevo);
-
         LOGGER.log(Level.INFO, "Se ha registrado un nuevo cliente con cedula: " + cedula + "");
         return clienteNuevo;
     }
@@ -194,7 +196,6 @@ public class Empresa {
             LOGGER.log(Level.SEVERE, "La cedula " + cedula + " no esta registrada" );
             throw new ClienteNoRegistradoException("El cliente no ha sido registrado");
         }
-        clienteEncontrado.setCedula(cedula);
         clienteEncontrado.setNombre(nombre);
         clienteEncontrado.setTelefono(telefono);
         clienteEncontrado.setCiudad(ciudad);
@@ -254,33 +255,31 @@ public class Empresa {
      * @return
      * @throws VehiculoYaExistenteException
      */
-
-    //VALIDAR LOS DATOS COMO KILOMETRAJE.
-    public Vehiculo crearVehiculo(String placa,String referencia, MarcaVehiculo marcaVehiculo,String modelo,ArrayList<String> rutaImagenes, double kilometraje, double precioAlquiler, TipoCajaVehiculo tipoCajaVehiculo, int numSillas) throws AtributosVaciosException, AtributoNegativoException, VehiculoYaExistenteException {
+    public Vehiculo crearVehiculo(String placa,String referencia, MarcaVehiculo marcaVehiculo,String modelo, String imagenVehiculo, double kilometraje, double precioAlquiler, TipoCajaVehiculo tipoCajaVehiculo, int numSillas) throws AtributosVaciosException, AtributoNegativoException, VehiculoYaExistenteException {
 
         Vehiculo vehiculoAsociado = obtenerVehiculo(placa);
 
-        if(placa == null || placa.isBlank()){
+        if(placa == "" || placa.isEmpty()){
             LOGGER.log(Level.WARNING, "La placa es obligatoria para el registro" );
             throw new AtributosVaciosException("La placa es obligatoria");
         }
 
-        if(referencia == null || referencia.isBlank()){
+        if(referencia == "" || referencia.isEmpty()){
             LOGGER.log(Level.WARNING, "La referencia es obligatoria para el registro" );
             throw new AtributosVaciosException("La referencia es obligatoria");
         }
 
         if(marcaVehiculo == null){
-            LOGGER.log(Level.WARNING, "El telefono es obligatorio para el registro" );
-            throw new AtributosVaciosException("El telefono es obligatorio");
+            LOGGER.log(Level.WARNING, "La marca es obligatoria para el registro" );
+            throw new AtributosVaciosException("La marca es obligatoria");
         }
 
-        if(modelo == null || modelo .isBlank()){
+        if(modelo == "" || modelo.isEmpty()){
             LOGGER.log(Level.WARNING, "El modelo es obligatorio para el registro" );
             throw new AtributosVaciosException("El modelo es obligatorio");
         }
 
-        if(rutaImagenes == null){
+        if(imagenVehiculo == null || imagenVehiculo == ""){
             LOGGER.log(Level.WARNING, "La imagen es obligatoria para el registro" );
             throw new AtributosVaciosException("La imagen es obligatoria");
         }
@@ -315,7 +314,7 @@ public class Empresa {
                 .referencia(referencia)
                 .marcaVehiculo(marcaVehiculo)
                 .modelo(modelo)
-                .rutasImagenes(rutaImagenes)
+                .imagenVehiculo(imagenVehiculo)
                 .kilometraje(kilometraje)
                 .precioAlquiler(precioAlquiler)
                 .tipoCajaVehiculo(tipoCajaVehiculo)
@@ -324,7 +323,7 @@ public class Empresa {
 
         listaVehiculos.add(vehiculoNuevo);
 
-        LOGGER.log(Level.INFO, "Se ha registrado un nuevo cliente con cedula: " + placa + "");
+        LOGGER.log(Level.INFO, "Se ha registrado un nuevo vehiculo con placa: " + placa + "");
         return vehiculoNuevo;
     }
 
@@ -374,7 +373,7 @@ public class Empresa {
      * @throws VehiculoNoRegistradoException
      */
 
-    public void eliminarVehiculo(String placa)throws VehiculoNoRegistradoException{
+    public void eliminarVehiculo(String placa) throws VehiculoNoRegistradoException{
         Vehiculo vehiculoPorEliminar = obtenerVehiculo(placa);
         for(Vehiculo vehiculo : listaVehiculos){
             if(vehiculo.getPlaca().equals(placa)){
@@ -385,125 +384,141 @@ public class Empresa {
             listaVehiculos.remove(vehiculoPorEliminar);
         }else{
             LOGGER.log(Level.SEVERE, "La placa " + placa + " no esta registrada" );
-            throw new VehiculoNoRegistradoException("El vehiculo con "+ placa + " no esta registrada");
+            throw new VehiculoNoRegistradoException("El vehiculo con "+ placa + " no esta registrado");
         }
     }
 
     //CRUD REGISTRO================================================================================================
 
-    /**
-     * Obtiene el registro dado el cliente
-     * @param Cliente
-     * @return
-     */
 
-    public Registro obtenerRegistro(Cliente cliente){
-        Registro registroEncontrado = null;
-        for(Registro registro : listaRegistros){
-            if(registro.getCliente().equals(cliente)){
-                registroEncontrado = registro;
-            }
+    /**
+     * Crea un registro para alquilar un vehiculo
+     * @param cedulaCliente cedula del cliente responsable
+     * @param vehiculo vehiculo a alquilar
+     * @param fechaInicial inicio del alquiler
+     * @param fechaFinal final del alquiler
+     * @return el registro creado
+     * @throws AtributosVaciosException
+     * @throws FechaInvalidaException
+     * @throws ClienteNoRegistradoException
+     */
+    public Registro crearRegistro(String cedulaCliente, Vehiculo vehiculo, LocalDate fechaInicial, LocalDate fechaFinal) throws AtributosVaciosException, FechaInvalidaException, ClienteNoRegistradoException {
+        if (cedulaCliente == null || cedulaCliente.equals("")) {
+            LOGGER.log(Level.WARNING, "La cédula del cliente es un campo obligatorio");
+            throw new AtributosVaciosException("La cédula del cliente es un campo obligatorio");
         }
-        return registroEncontrado;
+        if (vehiculo == null) {
+            LOGGER.log(Level.WARNING, "El vehiculo es un campo obligatorio");
+            throw new AtributosVaciosException("Es necesario seleccionar un vehículo");
+        }
+        if (fechaInicial == null) {
+            LOGGER.log(Level.WARNING, "La fecha de inicio es un campo obligatorio");
+            throw new AtributosVaciosException("Debe seleccionar un valor en la fecha inicial");
+        }
+        if (fechaFinal == null) {
+            LOGGER.log(Level.WARNING, "La fecha final es un campo obligatorio");
+            throw new AtributosVaciosException("Debe seleccionar un valor en la fecha final");
+        }
+        if (!fechaInicial.isBefore(fechaFinal)) {
+            LOGGER.log(Level.WARNING, "La fecha inicial no puede ser mayor a la fecha final");
+            throw new FechaInvalidaException("La fecha inicial no puede estar después de la fecha final");
+        }
+        //Calcula los dias
+        long dias = fechaInicial.until(fechaFinal, ChronoUnit.DAYS);
+        Cliente cliente = obtenerCliente(cedulaCliente);
+        if (cliente == null) {
+            LOGGER.log(Level.WARNING, "La fecha inicial no puede ser mayor a la fecha final");
+            throw new ClienteNoRegistradoException("No existe un cliente que tenga esta cédula");
+        }
+        //Calculo el precio para la factura
+        double precio = vehiculo.getPrecioAlquiler() * dias;
+        //Creo el registro
+        Registro registro = Registro.builder()
+                .cliente(cliente)
+                .vehiculo(vehiculo)
+                .fechaRegistro(LocalDateTime.now())
+                .fechaInicio(fechaInicial)
+                .fechaRegreso(fechaFinal)
+                .precioFactura(precio)
+                .build();
+        listaRegistros.add(registro);
+        return registro;
     }
 
     /**
-     * Retorna el valor booleano si se pudo crear el registro
-     * @param cliente
-     * @param vehiculo
-     * @param precioFactura
-     * @param fechaAlquiler
-     * @param fechaRegreso
-     * @return
-     * @throw RegistroYaCreadoException
+     * Obtiene los vehiculos que estan dentro de las fechas especificadas
+     * @param fechaInicial Fecha inicial a revisar
+     * @param fechaFinal Fecha final a revisar
+     * @return Lista de vehiculos disponibles
      */
-
-    public Registro crearRegistro(Cliente cliente, String cedulaCliente, Vehiculo vehiculo, String placaVehiculo, LocalDateTime fechaRegistro, LocalDate fechaInicio, LocalDate fechaRegreso, double precioFactura)throws Exception, AtributosVaciosException, AtributoNegativoException, RegistroYaExistenteException {
-
-        Registro registroAsociado = obtenerRegistro(cliente);
-        Cliente clientePorRegistrar = obtenerCliente(cedulaCliente);
-        Vehiculo vehiculoPorRegistrar = obtenerVehiculo(placaVehiculo);
-
-        if (clientePorRegistrar == null || clientePorRegistrar.equals("")) {
-            LOGGER.log(Level.WARNING, "El cliente es obligatorio para el registro");
-            throw new AtributosVaciosException("El cliente es obligatorio");
-        }
-
-        if (vehiculoPorRegistrar == null || vehiculoPorRegistrar.equals("")) {
-            LOGGER.log(Level.WARNING, "La placa es obligatoria para el registro");
-            throw new AtributosVaciosException("La placa es obligatoria");
-        }
-
-        if (fechaRegistro == null) {
-            LOGGER.log(Level.WARNING, "La fecha de registro es obligatoria para el registro");
-            throw new AtributosVaciosException("La fecha de registro es obligatoria");
-        }
-
-        if (fechaInicio == null) {
-            LOGGER.log(Level.WARNING, "La fecha de inicio es obligatoria para el registro");
-            throw new AtributosVaciosException("La fecha de inicio es obligatoria");
-        }
-
-        if (fechaInicio.isAfter(fechaRegreso)) {
-            LOGGER.log(Level.WARNING, "La fecha de inicio no puede estar despues de la ficha final");
-            throw new Exception("La fecha de inicio no puede estar después de la fecha final");
-        }
-
-        //Cuenta la diferencia de dias
-        long dias = fechaInicio.until(fechaRegreso, ChronoUnit.DAYS);
-
-        if (fechaRegreso == null) {
-            LOGGER.log(Level.WARNING, "La fecha de regreso es obligatoria para el registro");
-            throw new AtributosVaciosException("La fecha de regreso es obligatoria");
-        }
-
-        if (fechaRegreso.isBefore(fechaInicio)) {
-            LOGGER.log(Level.WARNING, "La fecha de regreso no puede estar antes de la fecha de incio");
-            throw new Exception("La fecha de regreso no puede estar antes de la fecha de incio");
-        }
-
-        if (precioFactura < 0) {
-            LOGGER.log(Level.WARNING, "El precio debe ser mayor a 0");
-            throw new AtributoNegativoException("El precio no puede ser negativo");
-        }
-
-        if (registroAsociado != null) {
-            LOGGER.log(Level.SEVERE, "El cliente " + cliente + " ya se le asigno un registro");
-            throw new RegistroYaExistenteException("Ya se le asigno un registro");
-        } else {
-
-            Registro registroNuevo = Registro.builder()
-                    .cliente(clientePorRegistrar)
-                    .vehiculo(vehiculoPorRegistrar)
-                    .fechaRegistro(fechaRegistro)
-                    .fechaInicio(fechaInicio)
-                    .fechaRegreso(fechaRegreso)
-                    .precioFactura(precioFactura)
-                    .build();
-            listaRegistros.add(registroNuevo);
-            return registroNuevo;
-        }
-    }
-
-    /**
-     * Elmina el registro segun el cliente asociado
-     * @param cliente
-     * @throw RegistroNoRegistradoException
-     */
-
-    public void eliminarRegistro(Cliente cliente)throws RegistroNoRegistradoException {
-        Registro registroPorEliminar = null;
+    public ArrayList<Vehiculo> obtenerVehiculosDisponibles(LocalDate fechaInicial, LocalDate fechaFinal) {
+        ArrayList<Vehiculo> vehiculosDisponibles = listaVehiculos;
         for (Registro registro : listaRegistros) {
-            if (registro.getCliente().equals(cliente)) {
-                registroPorEliminar = registro;
+            // Verifica si las fechas se solapan, si es así, el vehículo no está disponible
+            if (!(fechaFinal.isBefore(registro.getFechaInicio()) || fechaInicial.isAfter(registro.getFechaRegreso()))) {
+                vehiculosDisponibles.remove(registro.getVehiculo());
             }
         }
-        if (registroPorEliminar != null) {
-            listaRegistros.remove(registroPorEliminar);
-        } else {
-            LOGGER.log(Level.SEVERE, "El registro asignado al cliente  " + cliente + " no esta creado" );
-            throw new RegistroNoRegistradoException("El registro para el cliente " + cliente + " no se ha creado");
+        // Ordena los vehículos por precio de alquiler de menor a mayor
+        Collections.sort(vehiculosDisponibles, Comparator.comparingDouble(Vehiculo::getPrecioAlquiler));
+        return vehiculosDisponibles;
+    }
+
+    /**
+     * Valida que las fechas esten ingresadas de manera correcta
+     * @param fechaInicial Fecha inicial a validar
+     * @param fechaFinal Fecha final a validar
+     * @throws FechaInvalidaException
+     */
+    public void validarFechas(LocalDate fechaInicial, LocalDate fechaFinal) throws FechaInvalidaException, AtributosVaciosException {
+        if (fechaInicial == null) {
+            throw new AtributosVaciosException("Debe seleccionar un valor en la fecha inicial");
+        }
+        if (fechaFinal == null) {
+            throw new AtributosVaciosException("Debe seleccionar un valor en la fecha final");
+        }
+        if (!fechaInicial.isBefore(fechaFinal)) {
+            throw new FechaInvalidaException("La fecha inicial no puede estar después de la fecha final");
         }
     }
+
+
+    //FUNCIONES PARA DATOS DE LA EMPRESA ============================================================================
+
+    /**
+     * Lista de vehiculos alquilados
+     * @param fechaInicial fecha inical a revisar
+     * @param fechaFinal fecha final a revisar
+     * @return lista de vehiculos alquilados entre la fechas que pasan como parametro
+     */
+    public ArrayList<Vehiculo> obtenerVehiculosAlquilados(LocalDate fechaInicial, LocalDate fechaFinal) {
+        ArrayList<Vehiculo> vehiculosAlquilados = new ArrayList<>();
+        for (Registro registro : listaRegistros) {
+            // Verifica si las fechas se solapan, si es así, el vehículo no está disponible
+            if (!(fechaFinal.isBefore(registro.getFechaInicio()) || fechaInicial.isAfter(registro.getFechaRegreso()))) {
+                vehiculosAlquilados.add(registro.getVehiculo());
+            }
+        }
+        return vehiculosAlquilados;
+    }
+
+    /**
+     * Calcula el total ganado por registros entre una fecha inicial y una final
+     * @param fechaInicial
+     * @param fechaFinal
+     * @return
+     */
+    public double calcularTotalGanado(LocalDate fechaInicial, LocalDate fechaFinal) {
+        double total = 0.0;
+        for (Registro registro : listaRegistros) {
+            // Verifica si las fechas se solapan, si es así, el vehículo no está disponible
+            if (!(fechaFinal.isBefore(registro.getFechaInicio()) || fechaInicial.isAfter(registro.getFechaRegreso()))) {
+                total += registro.getPrecioFactura();
+            }
+        }
+        return total;
+    }
+
+    
 
 }
