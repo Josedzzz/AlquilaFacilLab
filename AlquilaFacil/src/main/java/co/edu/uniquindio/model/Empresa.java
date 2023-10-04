@@ -43,10 +43,27 @@ public class Empresa {
         }
         LOGGER.log(Level.INFO, "Se crea una nueva instancia de la empresa");
         this.listaClientes = new ArrayList<Cliente>();
-        Cliente cliente = new Cliente("111", "Jose", "111", "111", "Armenia", "111");
-        listaClientes.add(cliente);
         this.listaVehiculos = new ArrayList<Vehiculo>();
         this.listaRegistros = new ArrayList<Registro>();
+
+        //SE QUEMAN DATOS
+        Cliente cliente = new Cliente("111", "Jose", "3214567890", "jose@prueba.com", "Armenia", "Cra 7 #45-67");
+        Cliente cliente1 = new Cliente("222","Camilo","3157024987","camilo@prueba.com","Quimbaya","Cra 5 #25-59");
+        Cliente cliente2 = new Cliente("333","Juan","3103784281","juan@prueba.com","Montenegro","Cra 10 #10-38");
+
+        listaClientes.add(cliente);
+        listaClientes.add(cliente1);
+        listaClientes.add(cliente2);
+
+
+
+        Vehiculo vehiculo = new Vehiculo("123-ABC","a36","1",MarcaVehiculo.BMW,"2000","src/main/resources/images/bmw.jpg",60000,200000,TipoCajaVehiculo.MANUAL,4);
+        Vehiculo vehiculo1 = new Vehiculo("456-DEF","Model 3","2",MarcaVehiculo.TESLA,"2022","src/main/resources/images/mazda.jpg",15000,250000,TipoCajaVehiculo.AUTOMATICO,4);
+        Vehiculo vehiculo2 = new Vehiculo("789-GHI", "Rx-7","3",MarcaVehiculo.MAZDA,"2006","src/main/resources/images/tesla.jpg",120000,180000,TipoCajaVehiculo.MANUAL,2);
+
+        listaVehiculos.add(vehiculo);
+        listaVehiculos.add(vehiculo1);
+        listaVehiculos.add(vehiculo2);
     }
 
     /**
