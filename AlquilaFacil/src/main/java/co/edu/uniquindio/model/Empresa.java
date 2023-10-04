@@ -521,6 +521,49 @@ public class Empresa {
         return total;
     }
 
-    
+    /**
+     * Lista de registros dentro de las fechas
+     * @param fechaIncial
+     * @param fechaFinal
+     * @return
+     */
+    public ArrayList<Registro> obtenerRegistrosEnFechas(LocalDate fechaIncial, LocalDate fechaFinal) {
+        ArrayList<Registro> registrosEnFechas = new ArrayList<>();
+        for (Registro registro : listaRegistros) {
+            // Verifica si las fechas se solapan, si es así, el vehículo no está disponible
+            if (!(fechaFinal.isBefore(registro.getFechaInicio()) || fechaIncial.isAfter(registro.getFechaRegreso()))) {
+                registrosEnFechas.add(registro);
+            }
+        }
+        return registrosEnFechas;
+    }
+
+    /**
+     * Encuentra la marca que mas se alquila revisando toda la lista de registros
+     * @return
+     */
+    public MarcaVehiculo encontrarMarcaMasAlquilada() throws ListaVaciaException {
+        if (listaRegistros == null || listaRegistros.isEmpty()) {
+            throw new ListaVaciaException("No existen registros para determinar cual es el vehiculo más alquilado");
+        }
+        int[] conteoMarcas = new int[MarcaVehiculo.values().length];
+        // Inicializa el conteo de cada marca en 0
+        for (Registro registro : listaRegistros) {
+            MarcaVehiculo marca = registro.getVehiculo().getMarcaVehiculo();
+            conteoMarcas[marca.ordinal()]++;
+        }
+        // Encuentra la marca con el conteo más alto
+        MarcaVehiculo marcaMasAlquilada = null;
+        int maxConteo = 0;
+        for (int i = 0; i < conteoMarcas.length; i++) {
+            if (conteoMarcas[i] > maxConteo) {
+                maxConteo = conteoMarcas[i];
+                marcaMasAlquilada = MarcaVehiculo.values()[i];
+            }
+        }
+        return marcaMasAlquilada;
+    }
+
+
 
 }

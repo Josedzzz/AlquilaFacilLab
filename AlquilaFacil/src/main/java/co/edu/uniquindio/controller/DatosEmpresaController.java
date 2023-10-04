@@ -3,10 +3,8 @@ package co.edu.uniquindio.controller;
 import co.edu.uniquindio.app.AlquilaFacilApp;
 import co.edu.uniquindio.exceptions.AtributosVaciosException;
 import co.edu.uniquindio.exceptions.FechaInvalidaException;
-import co.edu.uniquindio.model.Empresa;
-import co.edu.uniquindio.model.Propiedades;
-import co.edu.uniquindio.model.Registro;
-import co.edu.uniquindio.model.Vehiculo;
+import co.edu.uniquindio.exceptions.ListaVaciaException;
+import co.edu.uniquindio.model.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -149,8 +147,12 @@ public class DatosEmpresaController implements Initializable {
     private InicioController inicioController;
     private ObservableList<Vehiculo> listadoVehiculos = FXCollections.observableArrayList();
     private Vehiculo vehiculoSeleccion;
+    private ObservableList<Registro> listadoRegistros = FXCollections.observableArrayList();
     private LocalDate fechaInicialFiltrarRegistro;
     private LocalDate fechaFinalFiltrarRegistro;
+    private LocalDate fechaInicialFiltrarGanancias;
+    private LocalDate fechaFinalFiltrarGanancias;
+
 
     //Uso del singleton
     private final Empresa empresa = Empresa.getInstance();
@@ -202,6 +204,8 @@ public class DatosEmpresaController implements Initializable {
         columnFechaInicalGanancias.setText(propiedades.getResourceBundle().getString("lblFechaInicialRegistroDatosEmpresaView"));
         columnFechaFinalGanancias.setText(propiedades.getResourceBundle().getString("lblFechaFinalRegistroDatosEmpresaView"));
 
+        //PESTANIA DE REGISTROS
+
         //Datos de la tableView de vehiculos
         this.columnPlacaRegistro.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getPlaca()));
         this.columnReferenciaRegistro.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getReferencia()));
@@ -237,11 +241,53 @@ public class DatosEmpresaController implements Initializable {
         dateFechaFinalRegistro.setOnAction(event -> {
             fechaFinalFiltrarRegistro = dateFechaFinalRegistro.getValue();
         });
+
+        //PESTANIA DE GANANCIAS
+
+        //Datos de la tableVIew de registros
+        this.columnPlacaGanancias.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getVehiculo().getPlaca()));
+        this.columnFacturaGanancias.setCellValueFactory(e -> {
+            double gananacias = e.getValue().getPrecioFactura();
+            String gananciasString = String.valueOf(gananacias);
+            return new ReadOnlyStringWrapper(gananciasString);
+        });
+        this.columnCedulaGanancias.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getCliente().getCedula()));
+        this.columnFechaRegistroGanancias.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getFechaRegistro().toString()));
+        this.columnFechaInicalGanancias.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getFechaInicio().toString()));
+        this.columnFechaFinalGanancias.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getFechaRegreso().toString()));
+
+        //Manejo de la fecha inicial y de la fecha final para las ganancias
+        dateFechaInicialGanancias.setOnAction(event -> {
+            fechaInicialFiltrarGanancias = dateFechaInicialGanancias.getValue();
+        });
+        dateFechaFinalGanancias.setOnAction(event -> {
+            fechaFinalFiltrarGanancias = dateFechaFinalGanancias.getValue();
+        });
     }
 
+    /**
+     * Genera el total de ganancias en un rango de fechas
+     * @param event
+     */
     @FXML
     void generarTotalGanadoGanancias(ActionEvent event) {
+        try {
+            empresa.validarFechas(fechaInicialFiltrarGanancias, fechaFinalFiltrarGanancias);
+            double ganancias = empresa.calcularTotalGanado(fechaInicialFiltrarGanancias, fechaFinalFiltrarGanancias);
+            tableViewRegistrosGanancias.getItems().clear();
+            tableViewRegistrosGanancias.setItems(getRegistrosEnFechas(fechaInicialFiltrarGanancias, fechaFinalFiltrarGanancias));
+            txtGanancias.setText(String.valueOf(ganancias));
+            mostrarMensaje("Notificación AlquilaFacil", "Información valida", "Las ganancias en el rango de fechas fueron de: " + ganancias, Alert.AlertType.INFORMATION);
+        } catch (AtributosVaciosException e) {
+            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+        } catch (FechaInvalidaException e) {
+            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
 
+    private ObservableList<Registro> getRegistrosEnFechas(LocalDate fechaInicial, LocalDate fechaFinal) {
+        listadoRegistros.addAll(empresa.obtenerRegistrosEnFechas(fechaInicial, fechaFinal));
+        return listadoRegistros;
     }
 
     /**
@@ -264,9 +310,19 @@ public class DatosEmpresaController implements Initializable {
         inicioController.show();
     }
 
+    /**
+     * Muestra la marca de vehiculo mas alquilada
+     * @param event
+     */
     @FXML
     void verMarcaVehiculoGanancias(ActionEvent event) {
-
+        try {
+            MarcaVehiculo marcaVehiculo = empresa.encontrarMarcaMasAlquilada();
+            txtMarcaGanancias.setText(marcaVehiculo.toString());
+            mostrarMensaje("Notificación AlquilaFacil", "Información valida", "La marca más alquilada es: " + marcaVehiculo.toString(), Alert.AlertType.INFORMATION);
+        } catch (ListaVaciaException e) {
+            mostrarMensaje("Notificación AlquilaFacil", "Información invalida", e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     @FXML

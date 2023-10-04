@@ -164,3 +164,27 @@ Oct 03, 2023 4:39:51 AM co.edu.uniquindio.model.Empresa <init>
 INFO: Se crea una nueva instancia de la empresa
 Oct 03, 2023 4:40:07 AM co.edu.uniquindio.model.Empresa crearCliente
 INFO: Se ha registrado un nuevo cliente con cedula: aa
+Oct 03, 2023 12:02:45 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 12:03:02 PM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 11
+Oct 03, 2023 12:03:30 PM co.edu.uniquindio.model.Empresa actualizarVehiculo
+WARNING: La caja del vehiculo es obligatoria para podre actualizar
+Oct 03, 2023 12:03:35 PM co.edu.uniquindio.model.Empresa actualizarVehiculo
+SEVERE: La placa  no esta registrada
+Oct 03, 2023 12:09:19 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 12:09:46 PM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 1
+Oct 03, 2023 1:54:49 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 1:58:38 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 8:22:53 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 03, 2023 8:23:15 PM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 11
+Oct 03, 2023 8:23:41 PM co.edu.uniquindio.model.Empresa crearVehiculo
+WARNING: La caja del vehiculo es obligatoria para el registro
+Oct 03, 2023 8:23:48 PM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 22
