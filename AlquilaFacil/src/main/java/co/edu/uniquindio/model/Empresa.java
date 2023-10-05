@@ -58,8 +58,8 @@ public class Empresa {
 
 
         Vehiculo vehiculo = new Vehiculo("123-ABC","a36","1",MarcaVehiculo.BMW,"2000","src/main/resources/images/bmw.jpg",60000,200000,TipoCajaVehiculo.MANUAL,4);
-        Vehiculo vehiculo1 = new Vehiculo("456-DEF","Model 3","2",MarcaVehiculo.TESLA,"2022","src/main/resources/images/mazda.jpg",15000,250000,TipoCajaVehiculo.AUTOMATICO,4);
-        Vehiculo vehiculo2 = new Vehiculo("789-GHI", "Rx-7","3",MarcaVehiculo.MAZDA,"2006","src/main/resources/images/tesla.jpg",120000,180000,TipoCajaVehiculo.MANUAL,2);
+        Vehiculo vehiculo1 = new Vehiculo("456-DEF","Model 3","2",MarcaVehiculo.TESLA,"2022","src/main/resources/images/tesla.jpg",15000,250000,TipoCajaVehiculo.AUTOMATICO,4);
+        Vehiculo vehiculo2 = new Vehiculo("789-GHI", "Rx-7","3",MarcaVehiculo.MAZDA,"2006","src/main/resources/images/mazda.jpg",120000,180000,TipoCajaVehiculo.MANUAL,2);
 
         listaVehiculos.add(vehiculo);
         listaVehiculos.add(vehiculo1);
