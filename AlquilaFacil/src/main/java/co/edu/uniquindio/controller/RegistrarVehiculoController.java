@@ -6,6 +6,7 @@ import co.edu.uniquindio.exceptions.AtributosVaciosException;
 import co.edu.uniquindio.exceptions.VehiculoNoRegistradoException;
 import co.edu.uniquindio.exceptions.VehiculoYaExistenteException;
 import co.edu.uniquindio.model.*;
+import co.edu.uniquindio.utilities.Propiedades;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

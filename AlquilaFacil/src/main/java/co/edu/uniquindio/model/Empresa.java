@@ -1,6 +1,7 @@
 package co.edu.uniquindio.model;
 
 import co.edu.uniquindio.exceptions.*;
+import co.edu.uniquindio.utilities.Propiedades;
 import lombok.Getter;
 
 import java.io.IOException;
@@ -10,7 +11,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;

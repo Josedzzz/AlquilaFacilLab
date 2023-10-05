@@ -2,7 +2,7 @@ package co.edu.uniquindio.controller;
 
 import co.edu.uniquindio.app.AlquilaFacilApp;
 import co.edu.uniquindio.model.Empresa;
-import co.edu.uniquindio.model.Propiedades;
+import co.edu.uniquindio.utilities.Propiedades;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

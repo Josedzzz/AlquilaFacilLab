@@ -5,6 +5,7 @@ import co.edu.uniquindio.exceptions.AtributosVaciosException;
 import co.edu.uniquindio.exceptions.FechaInvalidaException;
 import co.edu.uniquindio.exceptions.ListaVaciaException;
 import co.edu.uniquindio.model.*;
+import co.edu.uniquindio.utilities.Propiedades;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

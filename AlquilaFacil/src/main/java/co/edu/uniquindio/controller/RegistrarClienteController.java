@@ -6,7 +6,7 @@ import co.edu.uniquindio.exceptions.CLienteYaExistenteException;
 import co.edu.uniquindio.exceptions.ClienteNoRegistradoException;
 import co.edu.uniquindio.model.Cliente;
 import co.edu.uniquindio.model.Empresa;
-import co.edu.uniquindio.model.Propiedades;
+import co.edu.uniquindio.utilities.Propiedades;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -5,7 +5,7 @@ import co.edu.uniquindio.exceptions.AtributosVaciosException;
 import co.edu.uniquindio.exceptions.ClienteNoRegistradoException;
 import co.edu.uniquindio.exceptions.FechaInvalidaException;
 import co.edu.uniquindio.model.Empresa;
-import co.edu.uniquindio.model.Propiedades;
+import co.edu.uniquindio.utilities.Propiedades;
 import co.edu.uniquindio.model.Registro;
 import co.edu.uniquindio.model.Vehiculo;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -21,8 +21,6 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class AlquilarVehiculoController implements Initializable {

@@ -1,4 +1,4 @@
-package co.edu.uniquindio.model;
+package co.edu.uniquindio.utilities;
 
 import lombok.Getter;
 import java.util.ResourceBundle;
