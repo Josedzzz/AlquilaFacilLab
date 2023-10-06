@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -16,6 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class InicioController implements Initializable {
@@ -34,6 +36,9 @@ public class InicioController implements Initializable {
 
     @FXML
     private Label lblTitulo;
+
+    @FXML
+    private Hyperlink linkCambiarIdioma;
 
     @FXML
     private Hyperlink linkDatosEmpresa;
@@ -67,6 +72,24 @@ public class InicioController implements Initializable {
         btnRegistrarVehiculo.setText(propiedades.getResourceBundle().getString("btnRegistrarVehiculoInicioView"));
         btnAlquilarVehiculo.setText(propiedades.getResourceBundle().getString("btnAlquilarVehiculoInicioView"));
         linkDatosEmpresa.setText(propiedades.getResourceBundle().getString("linkDatosEmpresaInicioView"));
+        linkCambiarIdioma.setText(propiedades.getResourceBundle().getString("linkCambioIdiomaView"));
+    }
+
+    /**
+     * Cambia el idioma de la aplicacion
+     * @param event
+     */
+    @FXML
+    void cambiarIdioma(ActionEvent event) throws IOException {
+        //Cambia el resourceBundle para que apunte al cambio de idioma
+        if (propiedades.leerIdioma().equals("en")) {
+            propiedades.escribirIdioma("es");
+        } else {
+            propiedades.escribirIdioma("en");
+        }
+        propiedades.setResourceBundle(ResourceBundle.getBundle("textos", new Locale(propiedades.leerIdioma())));
+        //Vuelvo a llamar la ventana actual para que se apliquen los cambios
+
     }
 
     /**
