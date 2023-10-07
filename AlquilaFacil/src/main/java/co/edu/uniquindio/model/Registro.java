@@ -2,6 +2,7 @@ package co.edu.uniquindio.model;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Registro {
+public class Registro implements Serializable {
     private Cliente cliente;
     private Vehiculo vehiculo;
     private LocalDateTime fechaRegistro;

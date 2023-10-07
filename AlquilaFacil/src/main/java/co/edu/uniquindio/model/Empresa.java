@@ -59,6 +59,13 @@ public class Empresa {
         } catch (Exception e) {
             LOGGER.log(Level.WARNING, "No se pudo cargar la lista de vehiculos serializadas: " + e.getMessage());
         }
+        try {
+            listaRegistros = (ArrayList<Registro>) ArchivoUtils.deserializarObjeto("src/main/resources/info/registros.data");
+            LOGGER.log(Level.INFO, "Se carga la lista de registros serializada");
+        } catch (Exception e) {
+            LOGGER.log(Level.WARNING, "No se pudo cargar la lista de vehiculos serializados: " + e.getMessage());
+
+        }
 
         //SE QUEMAN DATOS
        /* Cliente cliente = new Cliente("111", "Jose", "3214567890", "jose@prueba.com", "Armenia", "Cra 7 #45-67");
@@ -509,6 +516,14 @@ public class Empresa {
                 .build();
         listaRegistros.add(registro);
         LOGGER.log(Level.INFO, "Un registro fue creado de manera exitosa");
+        //Serializo el objeto
+        try {
+            ArchivoUtils.serializarObjeto("src/main/resources/info/registros.data", listaRegistros);
+            LOGGER.log(Level.INFO, "Serializo el nuevo registro");
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, "No se pudo serializar el nuevo registro: " + e.getMessage());
+        }
+
         return registro;
     }
 
