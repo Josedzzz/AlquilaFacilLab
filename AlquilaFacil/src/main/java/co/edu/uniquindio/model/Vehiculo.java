@@ -2,6 +2,7 @@ package co.edu.uniquindio.model;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Getter
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Vehiculo {
+public class Vehiculo implements Serializable {
     private String placa;
     private String referencia;
     private String registro;

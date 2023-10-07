@@ -326,3 +326,167 @@ Oct 06, 2023 3:04:14 PM co.edu.uniquindio.model.Empresa <init>
 INFO: Se crea una nueva instancia de la empresa
 Oct 06, 2023 3:06:24 PM co.edu.uniquindio.model.Empresa <init>
 INFO: Se crea una nueva instancia de la empresa
+Oct 06, 2023 3:57:41 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 06, 2023 11:02:55 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 06, 2023 11:03:05 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 06, 2023 11:03:05 PM co.edu.uniquindio.model.Empresa crearCliente
+WARNING: co.edu.uniquindio.model.Cliente
+Oct 06, 2023 11:04:45 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 06, 2023 11:04:53 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 06, 2023 11:04:53 PM co.edu.uniquindio.model.Empresa crearCliente
+WARNING: No se pudo realizar el registro del nuevo cliente: co.edu.uniquindio.model.Cliente
+Oct 06, 2023 11:05:40 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 06, 2023 11:05:49 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 06, 2023 11:05:49 PM co.edu.uniquindio.model.Empresa crearCliente
+WARNING: No se pudo realizar el registro del nuevo cliente: co.edu.uniquindio.model.Cliente
+Oct 06, 2023 11:07:15 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 06, 2023 11:07:25 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 06, 2023 11:07:25 PM co.edu.uniquindio.model.Empresa crearCliente
+WARNING: No se pudo realizar el registro del nuevo cliente: co.edu.uniquindio.model.Cliente
+Oct 06, 2023 11:08:36 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 06, 2023 11:08:49 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 06, 2023 11:13:15 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 06, 2023 11:13:23 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 06, 2023 11:15:18 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 06, 2023 11:15:26 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 06, 2023 11:30:32 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 06, 2023 11:30:39 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 06, 2023 11:30:39 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Serializo el nuevo cliente
+Oct 06, 2023 11:47:45 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 06, 2023 11:48:01 PM co.edu.uniquindio.model.Empresa actualizarCliente
+INFO: Se actualizaron los datos del cliente: 111
+Oct 06, 2023 11:48:01 PM co.edu.uniquindio.model.Empresa actualizarCliente
+INFO: Serializo los datos actualizados del cliente
+Oct 07, 2023 12:00:41 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 12:00:47 AM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Se elimino el cliente
+Oct 07, 2023 12:11:37 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 12:11:52 AM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Se elimino el cliente
+Oct 07, 2023 12:11:52 AM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Serializo el cliente eliminado
+Oct 07, 2023 12:34:37 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 12:34:53 AM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 07, 2023 12:34:53 AM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Serializo el nuevo cliente
+Oct 07, 2023 12:35:15 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 12:36:09 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 12:36:27 AM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 07, 2023 12:36:27 AM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Serializo el nuevo cliente
+Oct 07, 2023 12:36:38 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 12:37:01 AM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 22
+Oct 07, 2023 12:37:01 AM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Serializo el nuevo cliente
+Oct 07, 2023 12:37:08 AM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 33
+Oct 07, 2023 12:37:08 AM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Serializo el nuevo cliente
+Oct 07, 2023 12:37:22 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 12:37:38 AM co.edu.uniquindio.model.Empresa actualizarCliente
+INFO: Se actualizaron los datos del cliente: 11
+Oct 07, 2023 12:37:38 AM co.edu.uniquindio.model.Empresa actualizarCliente
+INFO: Serializo los datos actualizados del cliente
+Oct 07, 2023 12:37:54 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 12:38:04 AM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Se elimino el cliente
+Oct 07, 2023 12:38:04 AM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Serializo el cliente eliminado
+Oct 07, 2023 12:38:17 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 12:38:29 AM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Se elimino el cliente
+Oct 07, 2023 12:38:29 AM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Serializo el cliente eliminado
+Oct 07, 2023 12:38:38 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 12:38:52 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 12:39:02 AM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Se elimino el cliente
+Oct 07, 2023 12:39:02 AM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Serializo el cliente eliminado
+Oct 07, 2023 1:00:03 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 1:00:03 AM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar las listas serializadas: null
+Oct 07, 2023 1:00:29 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 11
+Oct 07, 2023 1:00:29 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Serializo el nuevo vehiculo
+Oct 07, 2023 1:01:15 AM co.edu.uniquindio.model.Empresa actualizarVehiculo
+INFO: Los datos del vehículo 789-GHI fueron actualizados
+Oct 07, 2023 1:01:15 AM co.edu.uniquindio.model.Empresa actualizarVehiculo
+INFO: Serializo el vehiculo actualizado
+Oct 07, 2023 1:01:19 AM co.edu.uniquindio.model.Empresa eliminarVehiculo
+INFO: El vehiculo fue eliminado
+Oct 07, 2023 1:01:19 AM co.edu.uniquindio.model.Empresa eliminarVehiculo
+INFO: Serializo el vehiculo eliminado
+Oct 07, 2023 1:03:00 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 1:03:00 AM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar las listas serializadas: null
+Oct 07, 2023 1:03:17 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 11
+Oct 07, 2023 1:03:18 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Serializo el nuevo vehiculo
+Oct 07, 2023 1:03:26 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 1:03:26 AM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar las listas serializadas: null
+Oct 07, 2023 1:06:07 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 1:06:07 AM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de clientes serializadas: null
+Oct 07, 2023 1:06:07 AM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 07, 2023 1:06:41 AM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 07, 2023 1:06:41 AM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Serializo el nuevo cliente
+Oct 07, 2023 1:06:50 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 1:06:50 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de clientes serializada
+Oct 07, 2023 1:06:50 AM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 07, 2023 1:07:18 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 11
+Oct 07, 2023 1:07:18 AM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Serializo el nuevo vehiculo
+Oct 07, 2023 1:07:37 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 07, 2023 1:07:37 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de clientes serializada
+Oct 07, 2023 1:07:37 AM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de vehiculos serializada

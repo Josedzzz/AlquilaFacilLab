@@ -1,6 +1,7 @@
 package co.edu.uniquindio.model;
 
 import co.edu.uniquindio.exceptions.*;
+import co.edu.uniquindio.utilities.ArchivoUtils;
 import co.edu.uniquindio.utilities.Propiedades;
 import lombok.Getter;
 
@@ -45,22 +46,31 @@ public class Empresa {
         this.listaClientes = new ArrayList<Cliente>();
         this.listaVehiculos = new ArrayList<Vehiculo>();
         this.listaRegistros = new ArrayList<Registro>();
+        //Se cargan las listas serializadas de la empresa
+        try {
+            listaClientes = (ArrayList<Cliente>) ArchivoUtils.deserializarObjeto("src/main/resources/info/clientes.data");
+            LOGGER.log(Level.INFO, "Se carga la lista de clientes serializada");
+        } catch (Exception e) {
+            LOGGER.log(Level.WARNING, "No se pudo cargar la lista de clientes serializadas: " + e.getMessage());
+        }
+        try {
+            listaVehiculos = (ArrayList<Vehiculo>) ArchivoUtils.deserializarObjeto("src/main/resources/info/vehiculos.data");
+            LOGGER.log(Level.INFO, "Se carga la lista de vehiculos serializada");
+        } catch (Exception e) {
+            LOGGER.log(Level.WARNING, "No se pudo cargar la lista de vehiculos serializadas: " + e.getMessage());
+        }
 
         //SE QUEMAN DATOS
-        Cliente cliente = new Cliente("111", "Jose", "3214567890", "jose@prueba.com", "Armenia", "Cra 7 #45-67");
+       /* Cliente cliente = new Cliente("111", "Jose", "3214567890", "jose@prueba.com", "Armenia", "Cra 7 #45-67");
         Cliente cliente1 = new Cliente("222","Camilo","3157024987","camilo@prueba.com","Quimbaya","Cra 5 #25-59");
         Cliente cliente2 = new Cliente("333","Juan","3103784281","juan@prueba.com","Montenegro","Cra 10 #10-38");
-
         listaClientes.add(cliente);
         listaClientes.add(cliente1);
-        listaClientes.add(cliente2);
-
-
+        listaClientes.add(cliente2);*/
 
         Vehiculo vehiculo = new Vehiculo("123-ABC","a36","1",MarcaVehiculo.BMW,"2000","src/main/resources/images/bmw.jpg",60000,200000,TipoCajaVehiculo.MANUAL,4);
         Vehiculo vehiculo1 = new Vehiculo("456-DEF","Model 3","2",MarcaVehiculo.TESLA,"2022","src/main/resources/images/tesla.jpg",15000,250000,TipoCajaVehiculo.AUTOMATICO,4);
         Vehiculo vehiculo2 = new Vehiculo("789-GHI", "Rx-7","3",MarcaVehiculo.MAZDA,"2006","src/main/resources/images/mazda.jpg",120000,180000,TipoCajaVehiculo.MANUAL,2);
-
         listaVehiculos.add(vehiculo);
         listaVehiculos.add(vehiculo1);
         listaVehiculos.add(vehiculo2);
@@ -163,8 +173,15 @@ public class Empresa {
 
 
         listaClientes.add(clienteNuevo);
-
         LOGGER.log(Level.INFO, "Se ha registrado un nuevo cliente con cedula: " + cedula + "");
+        //Serializo el objeto
+        try {
+            ArchivoUtils.serializarObjeto("src/main/resources/info/clientes.data", listaClientes);
+            LOGGER.log(Level.INFO, "Serializo el nuevo cliente");
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, "No se pudo serializar el nuevo cliente: " + e.getMessage());
+        }
+
         return clienteNuevo;
     }
 
@@ -222,6 +239,13 @@ public class Empresa {
         clienteEncontrado.setCiudad(ciudad);
         clienteEncontrado.setDireccion(direccion);
         LOGGER.log(Level.INFO, "Se actualizaron los datos del cliente: " + cedula);
+        //Serializo el objeto
+        try {
+            ArchivoUtils.serializarObjeto("src/main/resources/info/clientes.data", listaClientes);
+            LOGGER.log(Level.INFO, "Serializo los datos actualizados del cliente");
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, "No se pudo serializar los datos actualizados del cliente: " + e.getMessage());
+        }
     }
 
     /**
@@ -231,15 +255,17 @@ public class Empresa {
      */
 
     public void eliminarCliente(String cedula)throws ClienteNoRegistradoException {
-        Cliente clientePorEliminar = null;
-        for(Cliente cliente : listaClientes){
-            if(cliente.getCedula().equals(cedula)){
-                clientePorEliminar = cliente;
-            }
-        }
+        Cliente clientePorEliminar = obtenerCliente(cedula);
         if(clientePorEliminar != null){
             listaClientes.remove(clientePorEliminar);
             LOGGER.log(Level.INFO, "Se elimino el cliente");
+            //Serializo el objeto
+            try {
+                ArchivoUtils.serializarObjeto("src/main/resources/info/clientes.data", listaClientes);
+                LOGGER.log(Level.INFO, "Serializo el cliente eliminado");
+            } catch (IOException e) {
+                LOGGER.log(Level.WARNING, "No se pudo serializar el cliente eliminado: " + e.getMessage());
+            }
         }else{
             LOGGER.log(Level.SEVERE, "La cedula " + cedula + " no esta registrada" );
             throw new ClienteNoRegistradoException(propiedades.getResourceBundle().getString("actualizarClienteNoExiste"));
@@ -345,8 +371,14 @@ public class Empresa {
                 .build();
 
         listaVehiculos.add(vehiculoNuevo);
-
         LOGGER.log(Level.INFO, "Se ha registrado un nuevo vehiculo con placa: " + placa + "");
+        //Serializo el objeto
+        try {
+            ArchivoUtils.serializarObjeto("src/main/resources/info/vehiculos.data", listaVehiculos);
+            LOGGER.log(Level.INFO, "Serializo el nuevo vehiculo");
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, "No se pudo serializar el nuevo vehiculo: " + e.getMessage());
+        }
         return vehiculoNuevo;
     }
 
@@ -388,6 +420,13 @@ public class Empresa {
         vehiculoEncontrado.setPrecioAlquiler(precioAlquiler);
         vehiculoEncontrado.setTipoCajaVehiculo(tipoCajaVehiculo);
         LOGGER.log(Level.INFO, "Los datos del vehículo " + placa + " fueron actualizados");
+        //Serializo el objeto
+        try {
+            ArchivoUtils.serializarObjeto("src/main/resources/info/vehiculos.data", listaVehiculos);
+            LOGGER.log(Level.INFO, "Serializo el vehiculo actualizado");
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, "No se pudo serializar vehiculo actualizado: " + e.getMessage());
+        }
     }
 
 
@@ -399,14 +438,16 @@ public class Empresa {
 
     public void eliminarVehiculo(String placa) throws VehiculoNoRegistradoException{
         Vehiculo vehiculoPorEliminar = obtenerVehiculo(placa);
-        for(Vehiculo vehiculo : listaVehiculos){
-            if(vehiculo.getPlaca().equals(placa)){
-                vehiculoPorEliminar = vehiculo;
-            }
-        }
         if(vehiculoPorEliminar != null){
             listaVehiculos.remove(vehiculoPorEliminar);
             LOGGER.log(Level.INFO, "El vehiculo fue eliminado");
+            //Serializo el objeto
+            try {
+                ArchivoUtils.serializarObjeto("src/main/resources/info/vehiculos.data", listaVehiculos);
+                LOGGER.log(Level.INFO, "Serializo el vehiculo eliminado");
+            } catch (IOException e) {
+                LOGGER.log(Level.WARNING, "No se pudo serializar el vehiculo eliminado: " + e.getMessage());
+            }
         }else{
             LOGGER.log(Level.SEVERE, "La placa " + placa + " no esta registrada" );
             throw new VehiculoNoRegistradoException(propiedades.getResourceBundle().getString("actualizarVehiculo"));

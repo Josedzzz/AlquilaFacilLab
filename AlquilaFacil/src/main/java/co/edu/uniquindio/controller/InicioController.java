@@ -2,12 +2,12 @@ package co.edu.uniquindio.controller;
 
 import co.edu.uniquindio.app.AlquilaFacilApp;
 import co.edu.uniquindio.model.Empresa;
+import co.edu.uniquindio.utilities.ArchivoUtils;
 import co.edu.uniquindio.utilities.Propiedades;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
