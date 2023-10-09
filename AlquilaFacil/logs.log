@@ -1,0 +1,174 @@
+Oct 09, 2023 2:21:49 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 2:21:49 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de clientes serializadas: null
+Oct 09, 2023 2:21:49 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 09, 2023 2:21:49 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 2:22:50 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 2:22:50 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de clientes serializadas: null
+Oct 09, 2023 2:22:50 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 09, 2023 2:22:50 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 2:23:12 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 09, 2023 2:23:12 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Serializo el nuevo cliente
+Oct 09, 2023 2:23:30 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 22
+Oct 09, 2023 2:23:30 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Serializo el nuevo cliente
+Oct 09, 2023 2:39:25 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 2:39:25 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de clientes serializada
+Oct 09, 2023 2:39:25 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 09, 2023 2:39:25 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 2:39:52 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 2:39:52 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de clientes serializadas: null
+Oct 09, 2023 2:39:52 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 09, 2023 2:39:52 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 2:40:04 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 09, 2023 2:40:04 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Serializo el nuevo cliente
+Oct 09, 2023 2:40:20 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 22
+Oct 09, 2023 2:40:20 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Serializo el nuevo cliente
+Oct 09, 2023 2:40:54 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 2:40:54 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de clientes serializadas: null
+Oct 09, 2023 2:40:54 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 09, 2023 2:40:54 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 2:41:06 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 33
+Oct 09, 2023 2:41:06 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Serializo el nuevo cliente
+Oct 09, 2023 2:41:19 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 44
+Oct 09, 2023 2:41:19 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Serializo el nuevo cliente
+Oct 09, 2023 2:54:00 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 2:54:46 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 2:55:38 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 2:55:38 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 09, 2023 2:55:38 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 2:55:52 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 11
+Oct 09, 2023 2:56:03 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 22
+Oct 09, 2023 2:56:18 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 2:56:18 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 09, 2023 2:56:18 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 2:57:28 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 2:57:28 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 09, 2023 2:57:28 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 3:03:58 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 3:03:58 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de clientes leyendo un texto plano
+Oct 09, 2023 3:03:58 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 09, 2023 3:03:58 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 3:04:12 PM co.edu.uniquindio.model.Empresa actualizarCliente
+INFO: Se actualizaron los datos del cliente: 11
+Oct 09, 2023 3:04:12 PM co.edu.uniquindio.model.Empresa actualizarCliente
+INFO: Se guardo el cliente con sus datos actualizados
+Oct 09, 2023 3:04:27 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 3:04:27 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de clientes leyendo un texto plano
+Oct 09, 2023 3:04:27 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 09, 2023 3:04:27 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 3:04:34 PM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Se elimino el cliente
+Oct 09, 2023 3:04:34 PM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Se guardo el cliente eliminado
+Oct 09, 2023 3:04:45 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 3:04:45 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de clientes leyendo un texto plano
+Oct 09, 2023 3:04:45 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 09, 2023 3:04:45 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 3:04:52 PM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Se elimino el cliente
+Oct 09, 2023 3:04:52 PM co.edu.uniquindio.model.Empresa eliminarCliente
+INFO: Se guardo el cliente eliminado
+Oct 09, 2023 3:05:24 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 3:05:24 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de clientes leyendo un texto plano
+Oct 09, 2023 3:05:24 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializadas: null
+Oct 09, 2023 3:05:24 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 3:06:03 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 1111
+Oct 09, 2023 3:06:03 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se guarda el nuevo cliente
+Oct 09, 2023 3:06:42 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se ha registrado un nuevo cliente con cedula: 2222
+Oct 09, 2023 3:06:42 PM co.edu.uniquindio.model.Empresa crearCliente
+INFO: Se guarda el nuevo cliente
+Oct 09, 2023 3:09:45 PM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 123-ABC
+Oct 09, 2023 3:09:45 PM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Serializo el nuevo vehiculo
+Oct 09, 2023 3:10:47 PM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 456-DEF
+Oct 09, 2023 3:10:47 PM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Serializo el nuevo vehiculo
+Oct 09, 2023 3:11:46 PM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Se ha registrado un nuevo vehiculo con placa: 789-GHI
+Oct 09, 2023 3:11:46 PM co.edu.uniquindio.model.Empresa crearVehiculo
+INFO: Serializo el nuevo vehiculo
+Oct 09, 2023 3:12:01 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 3:12:01 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de clientes leyendo un texto plano
+Oct 09, 2023 3:12:01 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de vehiculos serializada
+Oct 09, 2023 3:12:01 PM co.edu.uniquindio.model.Empresa <init>
+WARNING: No se pudo cargar la lista de vehiculos serializados: null
+Oct 09, 2023 3:12:34 PM co.edu.uniquindio.model.Empresa crearRegistro
+INFO: Un registro fue creado de manera exitosa
+Oct 09, 2023 3:12:34 PM co.edu.uniquindio.model.Empresa crearRegistro
+INFO: Serializo el nuevo registro
+Oct 09, 2023 3:12:46 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se crea una nueva instancia de la empresa
+Oct 09, 2023 3:12:46 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de clientes leyendo un texto plano
+Oct 09, 2023 3:12:46 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de vehiculos serializada
+Oct 09, 2023 3:12:46 PM co.edu.uniquindio.model.Empresa <init>
+INFO: Se carga la lista de registros serializada

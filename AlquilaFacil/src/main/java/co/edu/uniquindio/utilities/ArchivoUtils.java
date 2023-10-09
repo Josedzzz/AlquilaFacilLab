@@ -37,23 +37,24 @@ public class ArchivoUtils {
     }
 
     /**
-     * Permite leer un archivo desde una ruta específica mediante Scanner
-     * @param ruta Ruta a leer
-     * @return Lista de String por cada línea del archivo
+     * Escribe datos en un archivo de texo
+     * @param ruta ruta Ruta donde se va a crear el archivo
+     * @param lista Información a guardar en el archivo
+     * @param concat True si se concatena los nuevos datos sin sobreescribir todo el archivo
      * @throws IOException
      */
-    public static ArrayList<String> leerArchivoScanner(String ruta) throws IOException {
+    public static void escribirArchivoBufferedWriter(String ruta, ArrayList<String> lista, boolean concat) throws IOException{
 
-        ArrayList<String> lista = new ArrayList<>();
-        Scanner sc = new Scanner(new File(ruta));
+        FileWriter fw = new FileWriter(ruta, concat);
+        BufferedWriter bw = new BufferedWriter(fw);
 
-        while(sc.hasNextLine()) {
-            lista.add(sc.nextLine());
+        for (String string : lista) {
+            bw.write(string);
+            bw.newLine();
         }
 
-        sc.close();
-
-        return lista;
+        bw.close();
+        fw.close();
     }
 
     /**
@@ -80,6 +81,26 @@ public class ArchivoUtils {
     }
 
     /**
+     * Permite leer un archivo desde una ruta específica mediante Scanner
+     * @param ruta Ruta a leer
+     * @return Lista de String por cada línea del archivo
+     * @throws IOException
+     */
+    public static ArrayList<String> leerArchivoScanner(String ruta) throws IOException {
+
+        ArrayList<String> lista = new ArrayList<>();
+        Scanner sc = new Scanner(new File(ruta));
+
+        while(sc.hasNextLine()) {
+            lista.add(sc.nextLine());
+        }
+
+        sc.close();
+
+        return lista;
+    }
+
+    /**
      * Escribe datos en un archivo de texo
      * @param ruta Ruta donde se va a crear el archivo
      * @param lista Datos que se escriben en el archivo
@@ -93,26 +114,6 @@ public class ArchivoUtils {
         ft.close();
     }
 
-    /**
-     * Escribe datos en un archivo de texo
-     * @param ruta ruta Ruta donde se va a crear el archivo
-     * @param lista Información a guardar en el archivo
-     * @param concat True si se concatena los nuevos datos sin sobreescribir todo el archivo
-     * @throws IOException
-     */
-    public static void escribirArchivoBufferedWriter(String ruta, ArrayList<String> lista, boolean concat) throws IOException{
-
-        FileWriter fw = new FileWriter(ruta, concat);
-        BufferedWriter bw = new BufferedWriter(fw);
-
-        for (String string : lista) {
-            bw.write(string);
-            bw.newLine();
-        }
-
-        bw.close();
-        fw.close();
-    }
 
     /**
      * Serializa un objeto en un archivo en formato XML

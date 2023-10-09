@@ -5,6 +5,8 @@ import co.edu.uniquindio.utilities.ArchivoUtils;
 import co.edu.uniquindio.utilities.Propiedades;
 import lombok.Getter;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -46,13 +48,20 @@ public class Empresa {
         this.listaClientes = new ArrayList<Cliente>();
         this.listaVehiculos = new ArrayList<Vehiculo>();
         this.listaRegistros = new ArrayList<Registro>();
-        //Se cargan las listas serializadas de la empresa
+        //Se lee el archivo de texto plano para los clientes
         try {
+            listaClientes = convertirStringCliente(ArchivoUtils.leerArchivoBufferedReader("src/main/resources/info/clientesPlanos.txt"));
+            LOGGER.log(Level.INFO, "Se carga la lista de clientes leyendo un texto plano");
+        } catch (Exception e) {
+            LOGGER.log(Level.WARNING, "No se pudo cargar la lista de clientes leyendo un texto plano: " + e.getMessage());
+        }
+        //Se cargan las listas serializadas de la empresa
+        /*try {
             listaClientes = (ArrayList<Cliente>) ArchivoUtils.deserializarObjeto("src/main/resources/info/clientes.data");
             LOGGER.log(Level.INFO, "Se carga la lista de clientes serializada");
         } catch (Exception e) {
             LOGGER.log(Level.WARNING, "No se pudo cargar la lista de clientes serializadas: " + e.getMessage());
-        }
+        }*/
         try {
             listaVehiculos = (ArrayList<Vehiculo>) ArchivoUtils.deserializarObjeto("src/main/resources/info/vehiculos.data");
             LOGGER.log(Level.INFO, "Se carga la lista de vehiculos serializada");
@@ -64,7 +73,6 @@ public class Empresa {
             LOGGER.log(Level.INFO, "Se carga la lista de registros serializada");
         } catch (Exception e) {
             LOGGER.log(Level.WARNING, "No se pudo cargar la lista de vehiculos serializados: " + e.getMessage());
-
         }
 
         //SE QUEMAN DATOS
@@ -75,12 +83,49 @@ public class Empresa {
         listaClientes.add(cliente1);
         listaClientes.add(cliente2);*/
 
-        Vehiculo vehiculo = new Vehiculo("123-ABC","a36","1",MarcaVehiculo.BMW,"2000","src/main/resources/images/bmw.jpg",60000,200000,TipoCajaVehiculo.MANUAL,4);
+        /*Vehiculo vehiculo = new Vehiculo("123-ABC","a36","1",MarcaVehiculo.BMW,"2000","src/main/resources/images/bmw.jpg",60000,200000,TipoCajaVehiculo.MANUAL,4);
         Vehiculo vehiculo1 = new Vehiculo("456-DEF","Model 3","2",MarcaVehiculo.TESLA,"2022","src/main/resources/images/tesla.jpg",15000,250000,TipoCajaVehiculo.AUTOMATICO,4);
         Vehiculo vehiculo2 = new Vehiculo("789-GHI", "Rx-7","3",MarcaVehiculo.MAZDA,"2006","src/main/resources/images/mazda.jpg",120000,180000,TipoCajaVehiculo.MANUAL,2);
         listaVehiculos.add(vehiculo);
         listaVehiculos.add(vehiculo1);
-        listaVehiculos.add(vehiculo2);
+        listaVehiculos.add(vehiculo2);*/
+    }
+
+    /**
+     * Para escribir clientes en texto plano
+     * @param clientes
+     * @return
+     */
+    public ArrayList<String> convertirClienteString(ArrayList<Cliente> clientes) {
+        ArrayList<String> clientesEnString = new ArrayList<>();
+        for (Cliente cliente : clientes) {
+            String clienteString = cliente.getCedula() + ";" + cliente.getNombre() + ";" + cliente.getTelefono() + ";" + cliente.getEmail() + ";" + cliente.getCiudad() + ";" + cliente.getDireccion();
+            clientesEnString.add(clienteString);
+        }
+        return clientesEnString;
+    }
+
+    /**
+     * Convierte la lista de String de clientes a objetos cliente
+     * @param clientesString
+     * @return
+     */
+    public ArrayList<Cliente> convertirStringCliente(ArrayList<String> clientesString) {
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        for (String clienteSt : clientesString) {
+            String[] partesCliente = clienteSt.split(";");
+            //Creo el objeto cliente
+            Cliente cliente = Cliente.builder()
+                    .cedula(partesCliente[0])
+                    .nombre(partesCliente[1])
+                    .telefono(partesCliente[2])
+                    .email(partesCliente[3])
+                    .ciudad(partesCliente[4])
+                    .direccion(partesCliente[5])
+                    .build();
+            clientes.add(cliente);
+        }
+        return clientes;
     }
 
     /**
@@ -181,12 +226,19 @@ public class Empresa {
 
         listaClientes.add(clienteNuevo);
         LOGGER.log(Level.INFO, "Se ha registrado un nuevo cliente con cedula: " + cedula + "");
-        //Serializo el objeto
-        try {
+        //Serializo el objeto con serializacion
+       /* try {
             ArchivoUtils.serializarObjeto("src/main/resources/info/clientes.data", listaClientes);
             LOGGER.log(Level.INFO, "Serializo el nuevo cliente");
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, "No se pudo serializar el nuevo cliente: " + e.getMessage());
+        }*/
+        //Guardo el objeto cliente con texto plano
+        try {
+            ArchivoUtils.escribirArchivoBufferedWriter("src/main/resources/info/clientesPlanos.txt", convertirClienteString(listaClientes), false);
+            LOGGER.log(Level.INFO, "Se guarda el nuevo cliente");
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, "No se pudo guardar el nuevo cliente: " + e.getMessage());
         }
 
         return clienteNuevo;
@@ -247,11 +299,18 @@ public class Empresa {
         clienteEncontrado.setDireccion(direccion);
         LOGGER.log(Level.INFO, "Se actualizaron los datos del cliente: " + cedula);
         //Serializo el objeto
-        try {
+        /*try {
             ArchivoUtils.serializarObjeto("src/main/resources/info/clientes.data", listaClientes);
             LOGGER.log(Level.INFO, "Serializo los datos actualizados del cliente");
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, "No se pudo serializar los datos actualizados del cliente: " + e.getMessage());
+        }*/
+        //Guardo el objeto cliente con texto plano
+        try {
+            ArchivoUtils.escribirArchivoBufferedWriter("src/main/resources/info/clientesPlanos.txt", convertirClienteString(listaClientes), false);
+            LOGGER.log(Level.INFO, "Se guardo el cliente con sus datos actualizados");
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, "No se pudo guardar el cliente actualizado: " + e.getMessage());
         }
     }
 
@@ -267,11 +326,18 @@ public class Empresa {
             listaClientes.remove(clientePorEliminar);
             LOGGER.log(Level.INFO, "Se elimino el cliente");
             //Serializo el objeto
-            try {
+            /*try {
                 ArchivoUtils.serializarObjeto("src/main/resources/info/clientes.data", listaClientes);
                 LOGGER.log(Level.INFO, "Serializo el cliente eliminado");
             } catch (IOException e) {
                 LOGGER.log(Level.WARNING, "No se pudo serializar el cliente eliminado: " + e.getMessage());
+            }*/
+            //Guardo el objeto cliente con texto plano
+            try {
+                ArchivoUtils.escribirArchivoBufferedWriter("src/main/resources/info/clientesPlanos.txt", convertirClienteString(listaClientes), false);
+                LOGGER.log(Level.INFO, "Se guardo el cliente eliminado");
+            } catch (IOException e) {
+                LOGGER.log(Level.WARNING, "No se pudo guardar el cliente eliminado: " + e.getMessage());
             }
         }else{
             LOGGER.log(Level.SEVERE, "La cedula " + cedula + " no esta registrada" );
