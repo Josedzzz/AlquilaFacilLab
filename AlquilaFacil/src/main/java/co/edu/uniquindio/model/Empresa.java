@@ -74,7 +74,7 @@ public class Empresa {
         } catch (Exception e) {
             LOGGER.log(Level.WARNING, "No se pudo cargar la lista de vehiculos serializados: " + e.getMessage());
         }
-
+        //
         //SE QUEMAN DATOS
        /* Cliente cliente = new Cliente("111", "Jose", "3214567890", "jose@prueba.com", "Armenia", "Cra 7 #45-67");
         Cliente cliente1 = new Cliente("222","Camilo","3157024987","camilo@prueba.com","Quimbaya","Cra 5 #25-59");
